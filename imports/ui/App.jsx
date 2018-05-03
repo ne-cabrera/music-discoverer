@@ -202,7 +202,7 @@ export default class App extends Component {
 
         <div className="laGrimes">
           <img className="laFotoGrimes" src="http://soundandvisionmex.com/wp-content/uploads/2015/11/grimes123.jpg" />
-          <p className="elTextoDeGrimes">Ella es Grimes y  es la recomendada de la vida!</p>
+          <p className="elTextoDeGrimes">Ella es Grimes y  es muy cool!</p>
         </div>
         <div className="elCanva2">
           <input type="text" id="textField1" ref="elReInput" onKeyPress={this.onPressEnter.bind(this)} />
