@@ -198,14 +198,16 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <h1>Ingresa El nombre de un artista!</h1>
-        <div>
+        <h1>Ingresa el nombre de un artista!</h1>
+        <div className="elCanva2">
           <input type="text" id="textField1" ref="elReInput" onKeyPress={this.onPressEnter.bind(this)} />
         </div>
+        <div className="elCanva">
+          <canvas className="elCanva" id="network" width="800" height="800"></canvas>
+        </div>
 
-        <canvas id="network" width="800" height="800"></canvas>
       </div>
 
-    )
+    );
   }
 }

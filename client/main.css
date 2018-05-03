@@ -1,1 +1,14 @@
 /* CSS declarations go here */
+
+h1{
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+.elCanva{
+  text-align: center;
+}
+.elCanva2{
+  text-align: center;
+  padding-bottom: 40px;
+}
