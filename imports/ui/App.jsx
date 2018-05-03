@@ -31,7 +31,7 @@ export default class App extends Component {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer BQCSbPBc8CIsiCJ9-rjWfHX4AHyZ3aMEnXthy0d6KYNcyATgWDCIiT2PcauS8QO1JFY-JGJVLkguEx1ibBPCxpZlSP4mXnzGLBYXMkih2DOKFwlooNc64ho61jwNGKNPtfSKtyUTcxAcuhKCHx-t0M2qvxdPeRjiIL4"
+          "Authorization": "Bearer BQCGVl8rY9Zu3aewnPXdyjJGZACT8wjfNWMtgafpwCaOD1oZbOjjVhT613nca4nrxJt_FhWUgSY9UuZXV-GhoL25aZYar0Zg5JxyykTYPmNE2sUmvW9MHMhSFGcwgWCwX_APdTd_ZRiXbtvRNepMsNnmE4kGCSVfGuY"
         }
       }
     ).then(r => r.json())
@@ -48,7 +48,7 @@ export default class App extends Component {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": "Bearer BQCSbPBc8CIsiCJ9-rjWfHX4AHyZ3aMEnXthy0d6KYNcyATgWDCIiT2PcauS8QO1JFY-JGJVLkguEx1ibBPCxpZlSP4mXnzGLBYXMkih2DOKFwlooNc64ho61jwNGKNPtfSKtyUTcxAcuhKCHx-t0M2qvxdPeRjiIL4"
+              "Authorization": "Bearer BQCGVl8rY9Zu3aewnPXdyjJGZACT8wjfNWMtgafpwCaOD1oZbOjjVhT613nca4nrxJt_FhWUgSY9UuZXV-GhoL25aZYar0Zg5JxyykTYPmNE2sUmvW9MHMhSFGcwgWCwX_APdTd_ZRiXbtvRNepMsNnmE4kGCSVfGuY"
             }
           }).then(r2 => r2.json())
           .then(res2 => {
@@ -202,6 +202,7 @@ export default class App extends Component {
 
         <div className="laGrimes">
           <img className="laFotoGrimes" src="http://soundandvisionmex.com/wp-content/uploads/2015/11/grimes123.jpg" />
+          <p className="elTextoDeGrimes">Ella es Grimes y  es la recomendada de la vida!</p>
         </div>
         <div className="elCanva2">
           <input type="text" id="textField1" ref="elReInput" onKeyPress={this.onPressEnter.bind(this)} />
