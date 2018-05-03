@@ -31,7 +31,7 @@ export default class App extends Component {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer BQBTcsxlcT-2hveNYRRknW6WbgMrS87f08REgvXe4-6olsAxCw_NhUqaDlGEcA3OSCqH6_LeT3Oo4tZwX7xmq0aJkPgNbu8d_jwHrqRRoKtaW7N8V8FxebJANjCHd4WaR_9CogHNzz3L1IYtGTirmEiUi8SiseETlHs"
+          "Authorization": "Bearer BQDi7598KvrR_NW-g0oFP2GYjoex_xL6tTnE9THN7Dmx5VmCFRRVmMycECHDiuOUyNKe9oo44q3YRq0BQyRwenpLnajJCucTBtRLfnb22zFELJPT7SdR_0udtMGnLbH4NABCreACDlsuciZ9luiq7m20adN0JM_XXPQ"
         }
       }
     ).then(r => r.json())
@@ -48,7 +48,7 @@ export default class App extends Component {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": "Bearer BQBTcsxlcT-2hveNYRRknW6WbgMrS87f08REgvXe4-6olsAxCw_NhUqaDlGEcA3OSCqH6_LeT3Oo4tZwX7xmq0aJkPgNbu8d_jwHrqRRoKtaW7N8V8FxebJANjCHd4WaR_9CogHNzz3L1IYtGTirmEiUi8SiseETlHs"
+              "Authorization": "Bearer BQDi7598KvrR_NW-g0oFP2GYjoex_xL6tTnE9THN7Dmx5VmCFRRVmMycECHDiuOUyNKe9oo44q3YRq0BQyRwenpLnajJCucTBtRLfnb22zFELJPT7SdR_0udtMGnLbH4NABCreACDlsuciZ9luiq7m20adN0JM_XXPQ"
             }
           }).then(r2 => r2.json())
           .then(res2 => {
@@ -86,7 +86,7 @@ export default class App extends Component {
                 .force("x", d3.forceX(width / 2))
                 .force("y", d3.forceY(height / 3.5))
                 .force("collide", d3.forceCollide(r + 1))
-                .force("charge", d3.forceManyBody().strength(-3000))
+                .force("charge", d3.forceManyBody().strength(-3200))
                 .force("link", d3.forceLink()
                   .id(function(d) { return d.name; }));
 
@@ -148,7 +148,7 @@ export default class App extends Component {
             console.log(pops);
             var scale = d3.scaleLinear()
               .domain([0, d3.max(pops)])
-              .range([0, 30]);
+              .range([0, 40]);
 
             function drawNode(d) {
               ctx.beginPath();
@@ -203,7 +203,7 @@ export default class App extends Component {
           <input type="text" id="textField1" ref="elReInput" onKeyPress={this.onPressEnter.bind(this)} />
         </div>
         <div className="elCanva">
-          <canvas className="elCanva" id="network" width="800" height="800"></canvas>
+          <canvas className="elCanva" id="network" width="800" height="1000"></canvas>
         </div>
 
       </div>
