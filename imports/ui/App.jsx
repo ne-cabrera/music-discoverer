@@ -23,13 +23,15 @@ export default class App extends Component {
 
       ]
     };
+    var pops = [];
+    var popu = 0;
     console.log(this.state.artist);
     fetch("https://api.spotify.com/v1/search?q=" + this.state.artist + "&type=artist&market=us&limit=2",
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer BQByFi8UdvMGLycCWF5xWZzbxz2zIWA40TY411uAW6OYCBPnFMB0_9_OjhWR_gKiuPvvED8b4IT9n3i5UVEayhmfUslHn3y9RL9mtEIeop-_n0jlXkv6VjFnglEJF8ap-XoNmGZTaQQULirstP7V4ozhLRNxlT18IZI"
+          "Authorization": "Bearer BQBTcsxlcT-2hveNYRRknW6WbgMrS87f08REgvXe4-6olsAxCw_NhUqaDlGEcA3OSCqH6_LeT3Oo4tZwX7xmq0aJkPgNbu8d_jwHrqRRoKtaW7N8V8FxebJANjCHd4WaR_9CogHNzz3L1IYtGTirmEiUi8SiseETlHs"
         }
       }
     ).then(r => r.json())
@@ -39,13 +41,14 @@ export default class App extends Component {
         // });
         console.log(res);
         console.log(res.artists.items[0].id);
+        popu = res.artists.items[0].followers.total;
 
         fetch("https://api.spotify.com/v1/artists/" + res.artists.items[0].id + "/related-artists",
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": "Bearer BQByFi8UdvMGLycCWF5xWZzbxz2zIWA40TY411uAW6OYCBPnFMB0_9_OjhWR_gKiuPvvED8b4IT9n3i5UVEayhmfUslHn3y9RL9mtEIeop-_n0jlXkv6VjFnglEJF8ap-XoNmGZTaQQULirstP7V4ozhLRNxlT18IZI"
+              "Authorization": "Bearer BQBTcsxlcT-2hveNYRRknW6WbgMrS87f08REgvXe4-6olsAxCw_NhUqaDlGEcA3OSCqH6_LeT3Oo4tZwX7xmq0aJkPgNbu8d_jwHrqRRoKtaW7N8V8FxebJANjCHd4WaR_9CogHNzz3L1IYtGTirmEiUi8SiseETlHs"
             }
           }).then(r2 => r2.json())
           .then(res2 => {
@@ -59,11 +62,12 @@ export default class App extends Component {
               // var templinks = this.state.links;
               // templinks.push(link);
               // tempNodes.push(node);
+              pops.push(artists[i].followers.total);
               graph.nodes.push(node);
               graph.links.push(link);
 
             }
-            var nodeGrimes = { name: this.state.artist, popularity: 10000 };
+            var nodeGrimes = { name: this.state.artist, popularity: popu };
             // var tempNodes2 = this.state.nodes;
             // tempNodes2.push(nodeGrimes);
             graph.nodes.push(nodeGrimes);
@@ -82,7 +86,7 @@ export default class App extends Component {
                 .force("x", d3.forceX(width / 2))
                 .force("y", d3.forceY(height / 3.5))
                 .force("collide", d3.forceCollide(r + 1))
-                .force("charge", d3.forceManyBody().strength(-2000))
+                .force("charge", d3.forceManyBody().strength(-3000))
                 .force("link", d3.forceLink()
                   .id(function(d) { return d.name; }));
 
@@ -141,13 +145,17 @@ export default class App extends Component {
               d3.event.subject.fx = null;
               d3.event.subject.fy = null;
             }
-
+            console.log(pops);
+            var scale = d3.scaleLinear()
+              .domain([0, d3.max(pops)])
+              .range([0, 30]);
 
             function drawNode(d) {
               ctx.beginPath();
-              ctx.fillStyle = color(d.party);
+              ctx.fillStyle = color(d.popularity);
               ctx.moveTo(d.x, d.y);
-              ctx.arc(d.x, d.y, d.popularity / 100000, 0, Math.PI * 2);
+              console.log(scale(d.popularity));
+              ctx.arc(d.x, d.y, scale(d.popularity), 0, Math.PI * 2);
               ctx.fill();
               ctx.beginPath();
               ctx.fillStyle = "black";
@@ -156,6 +164,7 @@ export default class App extends Component {
 
 
             }
+
 
 
             function drawLink(l) {
