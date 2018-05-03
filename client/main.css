@@ -12,3 +12,16 @@ h1{
   text-align: center;
   padding-bottom: 40px;
 }
+.laGrimes{
+  float: right;
+  padding-right: 50px;
+}
+.laFotoGrimes{
+  height: 200px;
+  width: 300px;
+  padding-left: 20px;
+}
+.foticos{
+    padding-left: 100px;
+    padding-bottom: 30px;
+}
