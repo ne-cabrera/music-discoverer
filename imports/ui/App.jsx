@@ -31,7 +31,7 @@ export default class App extends Component {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer BQCGVl8rY9Zu3aewnPXdyjJGZACT8wjfNWMtgafpwCaOD1oZbOjjVhT613nca4nrxJt_FhWUgSY9UuZXV-GhoL25aZYar0Zg5JxyykTYPmNE2sUmvW9MHMhSFGcwgWCwX_APdTd_ZRiXbtvRNepMsNnmE4kGCSVfGuY"
+          "Authorization": "Bearer BQDixhH_WgnQYICoBr-KJIe44iDCs3pPz0Mpz_6LC5rSpRvJ2c3zzLTdd31FWSmrROz5ezZPWFTPmiNng6tOayWoPeEo8dIYarjW72Lm4mwmCDjf1q3llIesKP7DCcNKJ5dX0VkodeLDugisiZXqswPM5OXyWu-e1KY"
         }
       }
     ).then(r => r.json())
@@ -48,7 +48,7 @@ export default class App extends Component {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": "Bearer BQCGVl8rY9Zu3aewnPXdyjJGZACT8wjfNWMtgafpwCaOD1oZbOjjVhT613nca4nrxJt_FhWUgSY9UuZXV-GhoL25aZYar0Zg5JxyykTYPmNE2sUmvW9MHMhSFGcwgWCwX_APdTd_ZRiXbtvRNepMsNnmE4kGCSVfGuY"
+              "Authorization": "Bearer BQDixhH_WgnQYICoBr-KJIe44iDCs3pPz0Mpz_6LC5rSpRvJ2c3zzLTdd31FWSmrROz5ezZPWFTPmiNng6tOayWoPeEo8dIYarjW72Lm4mwmCDjf1q3llIesKP7DCcNKJ5dX0VkodeLDugisiZXqswPM5OXyWu-e1KY"
             }
           }).then(r2 => r2.json())
           .then(res2 => {
@@ -117,7 +117,7 @@ export default class App extends Component {
               ctx.stroke();
 
               ctx.beginPath();
-              ctx.globalAlpha = 1.0;
+              ctx.globalAlpha = 2.0;
               graph.nodes.forEach(drawNode);
 
             }
