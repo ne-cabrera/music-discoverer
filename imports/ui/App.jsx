@@ -37,7 +37,6 @@ export default class App extends Component {
     ).then(r => r.json())
       .then(res => {
         // this.setState({
-        //   artistId: res.artists.items[0].id
         // });
         console.log(res);
         console.log(res.artists.items[0].id);
