@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import * as d3 from "d3";
+import {Login} from "./components/Login";
 
 export default class App extends Component {
   constructor() {
@@ -190,6 +191,9 @@ export default class App extends Component {
     return (
       <div>
         <h1>Ingresa El nombre de un artista!</h1>
+        <div>
+          <Login/>
+        </div>
         <div>
           <input type="text" id="textField1" ref="elReInput" onKeyPress={this.onPressEnter.bind(this)} />
         </div>

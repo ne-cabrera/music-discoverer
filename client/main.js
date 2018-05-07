@@ -1,9 +1,10 @@
-import React from 'react';
-import { Meteor } from 'meteor/meteor';
-import { render } from 'react-dom';
+import React from "react";
+import { Meteor } from "meteor/meteor";
+import { render } from "react-dom";
  
-import App from '../imports/ui/App';
+import App from "../imports/ui/App";
+import {AppRoutes} from "../imports/ui/Routes";
  
 Meteor.startup(() => {
-  render(<App />, document.getElementById('render-target'));
+  render(<AppRoutes />, document.getElementById("render-target"));
 });
