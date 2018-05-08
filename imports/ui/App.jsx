@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import * as d3 from "d3";
 import {Login} from "./components/Login";
+import PlaylistList from "./components/playlists/PlaylistList";
 
 export default class App extends Component {
   constructor() {
@@ -16,6 +17,7 @@ export default class App extends Component {
 
   }
   componentDidUpdate() {
+    Meteor.call("playlists.getPlaylists");
     const graph = {
       nodes: [
 
@@ -30,7 +32,7 @@ export default class App extends Component {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer BQByFi8UdvMGLycCWF5xWZzbxz2zIWA40TY411uAW6OYCBPnFMB0_9_OjhWR_gKiuPvvED8b4IT9n3i5UVEayhmfUslHn3y9RL9mtEIeop-_n0jlXkv6VjFnglEJF8ap-XoNmGZTaQQULirstP7V4ozhLRNxlT18IZI"
+          "Authorization": "Bearer BQDL-mS0WCbEKOC82T1e6ei6OhTUATjBmnP6bjCThKOwzqVSIqhbv1sL4XYfRxln9WODBSqJb_2BHnimgF5w5OxnTiRj7UEspKi9D5CdVSxqioxtxwwEOQU09xazZvW5KTz14lq6NMIleX9VjIAF9xV38MZibtmsSTpAYjf1G4r0_Lqmrg"
         }
       }
     ).then(r => r.json())
@@ -46,7 +48,7 @@ export default class App extends Component {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": "Bearer BQByFi8UdvMGLycCWF5xWZzbxz2zIWA40TY411uAW6OYCBPnFMB0_9_OjhWR_gKiuPvvED8b4IT9n3i5UVEayhmfUslHn3y9RL9mtEIeop-_n0jlXkv6VjFnglEJF8ap-XoNmGZTaQQULirstP7V4ozhLRNxlT18IZI"
+              "Authorization": "Bearer BQDL-mS0WCbEKOC82T1e6ei6OhTUATjBmnP6bjCThKOwzqVSIqhbv1sL4XYfRxln9WODBSqJb_2BHnimgF5w5OxnTiRj7UEspKi9D5CdVSxqioxtxwwEOQU09xazZvW5KTz14lq6NMIleX9VjIAF9xV38MZibtmsSTpAYjf1G4r0_Lqmrg"
             }
           }).then(r2 => r2.json())
           .then(res2 => {
@@ -193,6 +195,9 @@ export default class App extends Component {
         <h1>Ingresa El nombre de un artista!</h1>
         <div>
           <Login/>
+        </div>
+        <div>
+          <PlaylistList/>
         </div>
         <div>
           <input type="text" id="textField1" ref="elReInput" onKeyPress={this.onPressEnter.bind(this)} />

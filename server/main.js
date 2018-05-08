@@ -1,5 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import "../imports/api/songs";
+import "../imports/api/playlists";
 Meteor.startup(() => {
   ServiceConfiguration.configurations.update(
     { "service": "spotify" },
