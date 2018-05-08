@@ -163,15 +163,24 @@ export default class App extends Component {
 
     }
   }
+  onLogin() {
+    var options = {
+      showDialog: true, // Whether or not to force the user to approve the app again if they’ve already done so.
+      requestPermissions: ["user-read-email"] // Spotify access scopes.
+    };
+    Meteor.loginWithSpotify(options, function(err) {
+      console.log(err || "No error");
+    });
+  }
   render() {
     return (
       <div>
-        <NavBarHome />
+        <NavBarHome onLogin={this.onLogin.bind(this)} />
         <div>
           <Carousel />
         </div>
         <div>
-          <Login />
+          <Login onLogin={this.onLogin.bind(this)} />
         </div>
         <div>
           <input type="text" id="textField1" ref="elReInput" onKeyPress={this.onPressEnter.bind(this)} />
