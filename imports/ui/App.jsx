@@ -3,6 +3,7 @@ import { Meteor } from "meteor/meteor";
 import * as d3 from "d3";
 import {Login} from "./components/Login";
 import PlaylistList from "./components/playlists/PlaylistList";
+import ListsContainer from "./components/playlists/ListsContainer";
 
 export default class App extends Component {
   constructor() {
@@ -26,29 +27,31 @@ export default class App extends Component {
 
       ]
     };
+    var pops = [];
+    var popu = 0;
     console.log(this.state.artist);
     fetch("https://api.spotify.com/v1/search?q=" + this.state.artist + "&type=artist&market=us&limit=2",
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer BQDL-mS0WCbEKOC82T1e6ei6OhTUATjBmnP6bjCThKOwzqVSIqhbv1sL4XYfRxln9WODBSqJb_2BHnimgF5w5OxnTiRj7UEspKi9D5CdVSxqioxtxwwEOQU09xazZvW5KTz14lq6NMIleX9VjIAF9xV38MZibtmsSTpAYjf1G4r0_Lqmrg"
+          "Authorization": "Bearer " + Meteor.user().services.spotify.accessToken
         }
       }
     ).then(r => r.json())
       .then(res => {
         // this.setState({
-        //   artistId: res.artists.items[0].id
         // });
         console.log(res);
         console.log(res.artists.items[0].id);
+        popu = res.artists.items[0].followers.total;
 
         fetch("https://api.spotify.com/v1/artists/" + res.artists.items[0].id + "/related-artists",
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": "Bearer BQDL-mS0WCbEKOC82T1e6ei6OhTUATjBmnP6bjCThKOwzqVSIqhbv1sL4XYfRxln9WODBSqJb_2BHnimgF5w5OxnTiRj7UEspKi9D5CdVSxqioxtxwwEOQU09xazZvW5KTz14lq6NMIleX9VjIAF9xV38MZibtmsSTpAYjf1G4r0_Lqmrg"
+              "Authorization": "Bearer " + Meteor.user().services.spotify.accessToken
             }
           }).then(r2 => r2.json())
           .then(res2 => {
@@ -58,21 +61,13 @@ export default class App extends Component {
             for(var i in artists) {
               var node = { name: artists[i].name, popularity: artists[i].followers.total };
               var link = { source: artists[i].name, target: this.state.artist };
-              // var tempNodes = this.state.nodes;
-              // var templinks = this.state.links;
-              // templinks.push(link);
-              // tempNodes.push(node);
+              pops.push(artists[i].followers.total);
               graph.nodes.push(node);
               graph.links.push(link);
 
             }
-            var nodeGrimes = { name: this.state.artist, popularity: 10000 };
-            // var tempNodes2 = this.state.nodes;
-            // tempNodes2.push(nodeGrimes);
+            var nodeGrimes = { name: this.state.artist, popularity: popu };
             graph.nodes.push(nodeGrimes);
-            // this.setState({
-            //   nodes: tempNodes2
-            // });
             console.log(this.state);
 
             var canvas = d3.select("#network"),
@@ -85,7 +80,7 @@ export default class App extends Component {
                 .force("x", d3.forceX(width / 2))
                 .force("y", d3.forceY(height / 3.5))
                 .force("collide", d3.forceCollide(r + 1))
-                .force("charge", d3.forceManyBody().strength(-2000))
+                .force("charge", d3.forceManyBody().strength(-3200))
                 .force("link", d3.forceLink()
                   .id(function(d) { return d.name; }));
 
@@ -116,7 +111,7 @@ export default class App extends Component {
               ctx.stroke();
 
               ctx.beginPath();
-              ctx.globalAlpha = 1.0;
+              ctx.globalAlpha = 2.0;
               graph.nodes.forEach(drawNode);
 
             }
@@ -144,13 +139,17 @@ export default class App extends Component {
               d3.event.subject.fx = null;
               d3.event.subject.fy = null;
             }
-
+            console.log(pops);
+            var scale = d3.scaleLinear()
+              .domain([0, d3.max(pops)])
+              .range([0, 40]);
 
             function drawNode(d) {
               ctx.beginPath();
-              ctx.fillStyle = color(d.party);
+              ctx.fillStyle = color(d.popularity);
               ctx.moveTo(d.x, d.y);
-              ctx.arc(d.x, d.y, d.popularity / 100000, 0, Math.PI * 2);
+              console.log(scale(d.popularity));
+              ctx.arc(d.x, d.y, scale(d.popularity), 0, Math.PI * 2);
               ctx.fill();
               ctx.beginPath();
               ctx.fillStyle = "black";
@@ -159,6 +158,7 @@ export default class App extends Component {
 
 
             }
+
 
 
             function drawLink(l) {
@@ -194,18 +194,20 @@ export default class App extends Component {
       <div>
         <h1>Ingresa El nombre de un artista!</h1>
         <div>
-          <Login/>
+          <Login />
         </div>
         <div>
-          <PlaylistList/>
+          <ListsContainer/>
         </div>
         <div>
           <input type="text" id="textField1" ref="elReInput" onKeyPress={this.onPressEnter.bind(this)} />
         </div>
+        <div className="elCanva">
+          <canvas className="elCanva" id="network" width="800" height="1000"></canvas>
+        </div>
 
-        <canvas id="network" width="800" height="800"></canvas>
       </div>
 
-    )
+    );
   }
 }
