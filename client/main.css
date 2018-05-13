@@ -1,30 +1,95 @@
-/* CSS declarations go here */
+body {
+  padding-top: 54px;
+  font-family: 'Signika', sans-serif;
+}
 
-h1{
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+  
+nav {
+  margin: auto 100;
+  padding-bottom: 3.5rem;
+}
+
+.navbar {
+  border: 0;
+  font-size: 20px;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  padding: 0;
+  background: black;
+  box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+  height: 57px;
+
+}
+.nav-item, .nav-link {
+  line-height: 1.6;
+  margin: 15px 3px;
+  padding: 10px 15px;
+  opacity: .8;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #fff;
+}
+
+.navbar-header {
+  font-weight: 600;
+  margin: 5px 0px;
+  padding: 20px 15px;
+  font-size: 15px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.elDelMedio{
   text-align: center;
-  padding-top: 20px;
-  padding-bottom: 40px;
+  padding-top: 50px;
 }
-.elCanva{
+
+/*Carousel*/
+.carousel-item{
+  height: 550px;
+  padding-top: 50px;
   text-align: center;
 }
-.elCanva2{
+
+.i1{
+  background-image: url("https://images.pexels.com/photos/96380/pexels-photo-96380.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-position: center center;
+  background-size: cover;
+}
+.i2{
+  background-image: url("https://images.pexels.com/photos/63703/pexels-photo-63703.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-position: center center;
+  background-size: cover;
+
+}
+
+.i3{
+  background-image: url("https://images.pexels.com/photos/761543/pexels-photo-761543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-position: center center;
+  background-size: cover;
+}
+
+.imgCar{
+  height: 550px;
+}
+
+.content-carousel{
+  background-color: rgba(255, 255, 255, 0.16);
+  padding: 2rem;
+  border-radius: 0.8rem;
+  width: 60%;
+  margin: auto;
+  display: flex;
   text-align: center;
-  padding-bottom: 40px;
-}
-.laGrimes{
-  float: right;
-  padding-right: 50px;
-}
-.laFotoGrimes{
-  height: 200px;
-  width: 300px;
-  padding-left: 20px;
-}
-.foticos{
-    padding-left: 100px;
-    padding-bottom: 30px;
-}
-.elTextoDeGrimes{
-  text-align: center;
+  padding: 2rem 1.2rem 0;
+  flex-direction: column;
+  justify-content: center;
+  
 }
