@@ -1,20 +1,6 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Login } from "../Login";
-export class NavBarHome extends Component {
-  constructor(props) {
-    super(props);
-  }
+import React from "react";
 
-  handleLogin() {
-    var options = {
-      showDialog: true, // Whether or not to force the user to approve the app again if they’ve already done so.
-      requestPermissions: ["user-read-email"] // Spotify access scopes.
-    };
-    Meteor.loginWithSpotify(options, function(err) {
-      console.log(err || "No error");
-    });
-  }
+export class MainNav extends React.Component {
   render() {
     return (
       <div>
@@ -32,7 +18,6 @@ export class NavBarHome extends Component {
             </div>
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav ml-auto">
-                <Login />
               </ul>
             </div>
           </div>
@@ -41,4 +26,3 @@ export class NavBarHome extends Component {
     );
   }
 }
-

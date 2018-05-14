@@ -8,7 +8,6 @@ export class Carousel extends React.Component {
           <div className="carousel-inner">
             <div className="carousel-item i1 active">
               <div className="content-carousel">
-
               </div>
             </div>
             <div className="carousel-item i2">
