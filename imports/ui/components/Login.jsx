@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Meteor } from "meteor/meteor";
 import { withHistory, Link } from "react-router-dom";
 
 export class Login extends Component {
@@ -11,7 +12,7 @@ export class Login extends Component {
   login() {
     var options = {
       showDialog: true, // Whether or not to force the user to approve the app again if they’ve already done so.
-      requestPermissions: ["user-read-email"] // Spotify access scopes.
+      requestPermissions: ["user-read-email playlist-read-private"] // Spotify access scopes.
     };
     Meteor.loginWithSpotify(options, function(err) {
       console.log(err || "No error");
@@ -20,7 +21,7 @@ export class Login extends Component {
 
   render() {
     return (
-      <button onClick={this.login}>Login</button>
+      <a className="nav-link" onClick={this.login}>Login</a>
     );
   }
 }

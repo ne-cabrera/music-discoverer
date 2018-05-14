@@ -100,3 +100,44 @@ nav {
   padding-top: 40px;
   text-align: center;
 }
+.playlistsList{
+  padding-right: 0px !important;
+  max-height: 500px;
+  overflow-y: auto;
+  width: 500px;
+}
+
+.playlistsList::-webkit-scrollbar{
+  width: 5px;
+}
+
+
+.playlistsList::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+.songsList{
+  padding-left: 0px !important;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.songsList::-webkit-scrollbar{
+  width: 5px;
+}
+
+.songsList::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+.elNav{
+  padding-bottom: 40px;
+}
+.list-item-chevere{
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
