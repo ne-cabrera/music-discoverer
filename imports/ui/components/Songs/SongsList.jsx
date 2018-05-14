@@ -4,9 +4,9 @@ import SongsListItem from "./SongsListItem";
 export default class SongsList extends Component {
   render() {
     return (
-      <ul>
+      <ul className="list-group">
         {this.props.songs.map((d,i) =>(
-          <SongsListItem name={d.name} key={i}/>
+          <SongsListItem name={d.name} id={d.id} key={i} onClick={this.props.onSongClick}/>
         ))}
       </ul>
     );

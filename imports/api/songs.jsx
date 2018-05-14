@@ -17,5 +17,16 @@ Meteor.methods({
     var b = HTTP.call("GET", "https://api.spotify.com/v1/artists/" + artId + "/related-artists", options);
     var jRes2 = JSON.parse(b.content);
     return jRes2.artists;
+  },
+  "songs.getRecommendations"(songId){
+    var songs = HTTP.call("GET", "https://api.spotify.com/v1/recommendations?seed_tracks=" + songId,{
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + Meteor.user().services.spotify.accessToken
+      }
+    });
+    var jRes = JSON.parse(songs.content);
+    return jRes;
   }
 });

@@ -64,11 +64,11 @@ export default class ListsContainer extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-6 playlistsList">
             <PlaylistList playlists={this.state.playlists} onPlaylistClick={this.getTracks}/>
           </div>
-          <div className="col-md-6">
-            <SongsList songs={this.state.playlistTracks}/>
+          <div className="col-md-6 songsList">
+            <SongsList songs={this.state.playlistTracks} onSongClick={this.props.onClick}/>
           </div>
         </div>
       </div>

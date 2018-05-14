@@ -93,3 +93,32 @@ nav {
   justify-content: center;
   
 }
+
+.playlistsList{
+  padding-right: 0px !important;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.playlistsList::-webkit-scrollbar{
+  width: 5px;
+}
+
+
+.playlistsList::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+.songsList{
+  padding-left: 0px !important;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.songsList::-webkit-scrollbar{
+  width: 5px;
+}
+
+.songsList::-webkit-scrollbar-thumb {
+  background: #888; 
+}

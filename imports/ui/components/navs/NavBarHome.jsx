@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import {Login} from "../Login";
+import {Redirect} from "react-router-dom";
+import { withTracker } from "meteor/react-meteor-data";
 
-export class NavBarHome extends Component {
+class NavBarHome extends Component {
   constructor(props) {
     super(props);
   }
@@ -26,8 +29,9 @@ export class NavBarHome extends Component {
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav ml-auto">
 
-                <li className="nav-item" onClick={this.handleLogin.bind(this)}>
-                  <a href="" className="nav-link">Login</a>
+                <li className="nav-item">
+                  <Login/>
+                  {this.props.uId !== null ? <Redirect to="/playlists"/> : <div></div>}
                 </li>
               </ul>
             </div>
@@ -37,4 +41,8 @@ export class NavBarHome extends Component {
     );
   }
 }
-
+export default withTracker(() => {
+  return {
+    uId: Meteor.userId()
+  };
+})(NavBarHome);
