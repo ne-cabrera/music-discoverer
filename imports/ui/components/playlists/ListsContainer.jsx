@@ -21,10 +21,12 @@ export default class ListsContainer extends Component {
       }
       else{
         var arr = [];
+        console.log(res.items);
         res.items.map((d) => {
           var obj = {};
           obj.id = d.id;
           obj.name = d.name;
+          obj.img = d.images[0].url;
           arr.push(obj);
         });
         this.setState({

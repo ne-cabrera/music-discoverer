@@ -10,15 +10,16 @@ export default class MainContainer extends Component {
 
   clickSong(sId){
     Meteor.call("songs.getRecommendations", sId, (err, res) => {
-      if(err) throw(err)
+      if(err) throw(err);
       console.log(res);
-    })
+    });
   }
+
 
     
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-md-4">
             <ListsContainer onClick={this.clickSong}/>

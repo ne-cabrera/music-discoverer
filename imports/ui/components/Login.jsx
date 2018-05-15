@@ -19,7 +19,7 @@ export class Login extends Component{
 
   render(){
     return(
-      <button className="nav-link" onClick={this.login}>Login</button>
+      <a className="nav-link login" onClick={this.login}>Login</a>
     );
   }
 }

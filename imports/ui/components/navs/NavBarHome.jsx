@@ -6,10 +6,32 @@ import { withTracker } from "meteor/react-meteor-data";
 class NavBarHome extends Component {
   constructor(props) {
     super(props);
+    this.checkLogin = this.checkLogin.bind(this);
   }
 
   handleLogin() {
     this.props.onLogin();
+  }
+
+  
+  checkLogin(){
+    console.log(this.props.uId);
+    console.log(this.props.usr);
+    var t = new Date();
+    if(this.props.uId !== null){
+      if(this.props.usr !== undefined){
+        if(this.props.usr.services.spotify.expiresAt > t.getTime()){
+          return <Redirect to="/playlists"/>;
+        }
+        else{
+          Meteor.logout();
+          return <div></div>
+        }
+      }
+    }
+    else{
+      return <div></div>
+    }
   }
   render() {
     return (
@@ -31,7 +53,7 @@ class NavBarHome extends Component {
 
                 <li className="nav-item">
                   <Login/>
-                  {this.props.uId !== null ? <Redirect to="/playlists"/> : <div></div>}
+                  {this.checkLogin()}
                 </li>
               </ul>
             </div>
@@ -43,6 +65,7 @@ class NavBarHome extends Component {
 }
 export default withTracker(() => {
   return {
-    uId: Meteor.userId()
+    uId: Meteor.userId(),
+    usr: Meteor.user()
   };
 })(NavBarHome);

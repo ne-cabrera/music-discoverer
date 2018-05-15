@@ -13,9 +13,14 @@ export default class PlaylistListItem extends Component {
 
   render() {
     return (
-      <li className="list-group-item" onClick={this.handleClick}>
-        {this.props.name}
-      </li>
-    )
+      <div className="row playListContainer" onClick={this.handleClick}>
+        <div className="col-md-4">
+          <img src={this.props.img} alt="playlist picture" className="albumImg"/>
+        </div>
+        <div className="col-md-8">
+          <p>{this.props.name}</p>
+        </div>
+      </div>
+    );
   }
 }

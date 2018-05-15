@@ -122,3 +122,29 @@ nav {
 .songsList::-webkit-scrollbar-thumb {
   background: #888; 
 }
+
+.albumImg{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.playListContainer{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: thin solid #f2f2f2;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.playListContainer:hover{
+  background-color: #f4f5f5 !important;
+}
+
+.songCont{
+  padding-left: 10px;
+}
+
+.login{
+  cursor: pointer;
+}
