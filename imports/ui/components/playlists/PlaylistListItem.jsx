@@ -2,12 +2,12 @@ import React, { Component } from "react";
 
 export default class PlaylistListItem extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(){
+  handleClick() {
     this.props.onClick(this.props.id);
   }
 

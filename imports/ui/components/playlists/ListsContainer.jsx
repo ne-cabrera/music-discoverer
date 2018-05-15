@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Metor from "meteor/meteor";
+import { Metor } from "meteor/meteor";
 import PlaylistList from "./PlaylistList";
 import SongsList from "../Songs/SongsList";
 
 export default class ListsContainer extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       playlists: [],
@@ -14,12 +14,12 @@ export default class ListsContainer extends Component {
     this.getTracks = this.getTracks.bind(this);
   }
 
-  componentDidMount(){
-    Meteor.call("playlists.getPlaylists", (err, res) =>{
-      if(err){
+  componentDidMount() {
+    Meteor.call("playlists.getPlaylists", (err, res) => {
+      if(err) {
         console.log(err);
       }
-      else{
+      else {
         var arr = [];
         console.log(res.items);
         res.items.map((d) => {
@@ -36,14 +36,15 @@ export default class ListsContainer extends Component {
     });
   }
 
-  getTracks(playlistId){
-    Meteor.call("playlist.getTracks", playlistId, (err, res) =>{
-      if(err){
+  getTracks(playlistId) {
+    console.log(playlistId);
+    Meteor.call("playlist.getTracks", playlistId, (err, res) => {
+      if(err) {
         console.log(err);
       }
-      else{
+      else {
         var arr = [];
-        res.items.map((d) =>{
+        res.items.map((d) => {
           var obj = {};
           obj.album = d.track.album;
           obj.artists = d.track.artists;
@@ -56,7 +57,7 @@ export default class ListsContainer extends Component {
         });
         this.setState({
           playlistTracks: arr
-        })
+        });
       }
     });
   }
@@ -67,10 +68,10 @@ export default class ListsContainer extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-6 playlistsList">
-            <PlaylistList playlists={this.state.playlists} onPlaylistClick={this.getTracks}/>
+            <PlaylistList playlists={this.state.playlists} onPlaylistClick={this.getTracks} />
           </div>
           <div className="col-md-6 songsList">
-            <SongsList songs={this.state.playlistTracks} onSongClick={this.props.onClick}/>
+            <SongsList songs={this.state.playlistTracks} onSongClick={this.props.onClick} />
           </div>
         </div>
       </div>

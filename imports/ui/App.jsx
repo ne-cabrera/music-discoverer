@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import * as d3 from "d3";
 import { Login } from "./components/Login";
-import  NavBarHome  from "./components/navs/NavBarHome";
+import NavBarHome from "./components/navs/NavBarHome";
 import { Carousel } from "./components/Carousel";
 export default class App extends Component {
   constructor() {
@@ -174,12 +174,12 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <NavBarHome/>
+        <NavBarHome />
         <div>
           <Carousel />
         </div>
         <div>
-          <Login/>
+          <Login />
         </div>
         <div>
           <input type="text" id="textField1" ref="elReInput" onKeyPress={this.onPressEnter.bind(this)} />

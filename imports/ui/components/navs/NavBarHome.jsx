@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import {Login} from "../Login";
-import {Redirect} from "react-router-dom";
+import { Meteor } from "meteor/meteor";
+import { Login } from "../Login";
+import { Redirect } from "react-router-dom";
 import { withTracker } from "meteor/react-meteor-data";
 
 class NavBarHome extends Component {
@@ -10,7 +11,13 @@ class NavBarHome extends Component {
   }
 
   handleLogin() {
-    this.props.onLogin();
+    var options = {
+      showDialog: true, // Whether or not to force the user to approve the app again if they’ve already done so.
+      requestPermissions: ["user-read-email"] // Spotify access scopes.
+    };
+    Meteor.loginWithSpotify(options, function(err) {
+      console.log(err || "No error");
+    });
   }
 
   
