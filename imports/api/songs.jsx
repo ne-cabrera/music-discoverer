@@ -42,5 +42,16 @@ Meteor.methods({
     });
     var jRes = JSON.parse(songs.content);
     return jRes;
+  },
+  "songs.getRecoSongName"(songName) {
+    var options = {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + Meteor.user().services.spotify.accessToken
+      }
+    };
+    var a = HTTP.call("GET", "https://api.spotify.com/v1/search?q=" + songName + "&type=track&limit=10", options);
+    var jRes = JSON.parse(a.content);
+    return jRes;
   }
 });

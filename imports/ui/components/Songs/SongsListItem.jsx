@@ -14,7 +14,12 @@ export default class SongsListItem extends Component {
   render() {
     return (
       <li className="list-group-item" onClick={this.handleClick}>
-        <a className="list-item-chevere">{this.props.name}</a>
+        {this.props.artist === undefined ?
+          <a className="list-item-chevere">{this.props.name}</a>
+          :
+          <a className="list-item-chevere">{this.props.name + " - " + this.props.artist}</a>
+        }
+
       </li>
     );
   }
