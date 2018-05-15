@@ -47,7 +47,6 @@ export default class SongsPage extends React.Component {
       });
     });
   }
-
   onPressEnter(event) {
     console.log("das");
     var content = event.target.value;
@@ -66,7 +65,6 @@ export default class SongsPage extends React.Component {
 
     }
   }
-
   render() {
     return (
       <div>
