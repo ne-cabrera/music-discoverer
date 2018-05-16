@@ -10,7 +10,8 @@ export default class MainContainer extends Component {
     super(props);
     this.state = {
       grafo: null,
-      popus: []
+      popus: [],
+
     };
     this.clickSong = this.clickSong.bind(this);
   }
@@ -30,8 +31,9 @@ export default class MainContainer extends Component {
       };
       var pops = [];
       var songs = res.tracks;
+      console.log(songs);
       for(let s in songs) {
-        var node = { name: songs[s].name, popularity: songs[s].popularity };
+        var node = { name: songs[s].name, id: songs[s].id, popularity: songs[s].popularity };
         var link = { source: songs[s].name, target: name };
         pops.push(songs[s].popularity);
         graph.nodes.push(node);
@@ -58,7 +60,7 @@ export default class MainContainer extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-4">
-              <ListsContainer onClick={this.clickSong}/>
+              <ListsContainer onClick={this.clickSong} />
             </div>
             <div className="col-md-4">
               <Graph graph={this.state.grafo}

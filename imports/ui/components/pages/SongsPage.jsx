@@ -31,7 +31,7 @@ export default class SongsPage extends React.Component {
       var pops = [];
       var songs = res.tracks;
       for(let s in songs) {
-        var node = { name: songs[s].name, popularity: songs[s].popularity };
+        var node = { name: songs[s].name, id: songs[s].id, popularity: songs[s].popularity };
         var link = { source: songs[s].name, target: name };
         pops.push(songs[s].popularity);
         graph.nodes.push(node);
