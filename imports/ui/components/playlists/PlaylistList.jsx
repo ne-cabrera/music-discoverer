@@ -5,6 +5,7 @@ import * as d3 from "d3";
 export default class PlaylistList extends Component {
   constructor(props){
     super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidUpdate(prevProps){
@@ -20,9 +21,21 @@ export default class PlaylistList extends Component {
     }
   }
 
+  handleClick(){
+    this.props.onRecentlyPayedClick();
+  }
+
   render() {
     return (
       <div className="playlistsDiv">
+        <div className="row playListContainer" onClick={this.handleClick}>
+          <div className="col-md-4">
+            
+          </div>
+          <div className="col-md-8">
+            <p>Recently Played!</p>
+          </div>
+        </div>
         {this.props.playlists.map((d, i) =>(
           <PlaylistListItem name={d.name} id={d.id} img={d.img} key={i} onClick={this.props.onPlaylistClick}/>
         ))}

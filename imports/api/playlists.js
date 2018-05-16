@@ -23,5 +23,16 @@ Meteor.methods({
     });
     var res = JSON.parse(tracks.content);
     return res;
+  },
+  "playlists.getRecentlyPlayed"(){
+    var tracks = HTTP.call("GET", "https://api.spotify.com/v1/me/player/recently-played",{
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + Meteor.user().services.spotify.accessToken
+      }
+    });
+    var res = JSON.parse(tracks.content);
+    return res;
   }
 });

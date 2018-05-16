@@ -90,7 +90,7 @@ export class Graph extends Component {
       ctx.beginPath();
       ctx.fillStyle = color(d.popularity);
       ctx.moveTo(d.x, d.y);
-      console.log(d.popularity);
+      //console.log(d.popularity);
       ctx.arc(d.x, d.y, scale(d.popularity), 0, Math.PI * 2);
       ctx.fill();
       ctx.beginPath();
