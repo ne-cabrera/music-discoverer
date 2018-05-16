@@ -11,8 +11,25 @@ export default class ArtistPage extends React.Component {
     this.state = {
       artists: [],
       grafo: null,
-      popus: []
+      popus: [],
+      nodeArtist: null,
+      topTracks: []
     };
+  }
+
+  clickNode(aId) {
+    Meteor.call("songs.getArtistDetail", aId, (err, rest) => {
+      if(err) throw err;
+      console.log(rest);
+      Meteor.call("songs.topTracksArtist", aId, (err, rest2) => {
+        if(err) throw err;
+        console.log(rest2);
+        this.setState({
+          nodeArtist: rest,
+          topTracks: rest2
+        });
+      });
+    });
   }
 
 
@@ -32,7 +49,7 @@ export default class ArtistPage extends React.Component {
       var pops = [];
       var artists = res.artists;
       for(var i in artists) {
-        var node = { name: artists[i].name, popularity: artists[i].popularity };
+        var node = { name: artists[i].name, id: artists[i].id, popularity: artists[i].popularity };
         var link = { source: artists[i].name, target: name };
         pops.push(artists[i].popularity);
         graph.nodes.push(node);
@@ -89,7 +106,8 @@ export default class ArtistPage extends React.Component {
           </div>
           <div className="col-md-6">
             <Graph graph={this.state.grafo}
-              pops={this.state.popus} />
+              pops={this.state.popus}
+              clickNode={this.clickNode.bind(this)} />
           </div>
         </div>
 

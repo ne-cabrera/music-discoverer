@@ -8,6 +8,7 @@ export class Graph extends Component {
     super(props);
 
   }
+
   componentDidUpdate() {
 
     if(this.props.graph === null) return;
@@ -33,7 +34,7 @@ export class Graph extends Component {
     simulation.nodes(this.props.graph.nodes);
     simulation.force("link").links(this.props.graph.links);
     simulation.on("tick", update);
-
+    var click = this.props.clickNode;
     canvas
       .call(d3.drag()
         .container(canvas.node())
@@ -63,12 +64,18 @@ export class Graph extends Component {
     }
 
 
+    function clickNode(aId) {
+      console.log("entre");
+      click(aId);
+    }
 
     function dragstarted() {
+      console.log("gg");
       if(!d3.event.active) simulation.alphaTarget(0.3).restart();
       d3.event.subject.fx = d3.event.subject.x;
       d3.event.subject.fy = d3.event.subject.y;
       console.log(d3.event.subject);
+      clickNode(d3.event.subject.id);
     }
 
     function dragged() {
@@ -90,7 +97,6 @@ export class Graph extends Component {
       ctx.beginPath();
       ctx.fillStyle = color(d.popularity);
       ctx.moveTo(d.x, d.y);
-      //console.log(d.popularity);
       ctx.arc(d.x, d.y, scale(d.popularity), 0, Math.PI * 2);
       ctx.fill();
       ctx.beginPath();

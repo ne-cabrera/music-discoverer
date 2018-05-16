@@ -41,6 +41,28 @@ Meteor.methods({
     var jRes2 = JSON.parse(b.content);
     return jRes2;
   },
+  "songs.getArtistDetail"(artId) {
+    var options = {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + Meteor.user().services.spotify.accessToken
+      }
+    };
+    var b = HTTP.call("GET", "https://api.spotify.com/v1/artists/" + artId, options);
+    var jRes2 = JSON.parse(b.content);
+    return jRes2;
+  },
+  "songs.topTracksArtist"(artId) {
+    var options = {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + Meteor.user().services.spotify.accessToken
+      }
+    };
+    var a = HTTP.call("GET", "https://api.spotify.com/v1/artists/" + artId + "/top-tracks?country=US", options);
+    var jRes = JSON.parse(a.content);
+    return jRes;
+  },
   "songs.getRecommendations"(songId) {
     var songs = HTTP.call("GET", "https://api.spotify.com/v1/recommendations?seed_tracks=" + songId, {
       headers: {
