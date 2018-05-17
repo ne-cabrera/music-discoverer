@@ -11,9 +11,20 @@ export default class MainContainer extends Component {
     this.state = {
       grafo: null,
       popus: [],
-
+      trackInfo: null
     };
     this.clickSong = this.clickSong.bind(this);
+  }
+
+  clickNode(sId) {
+    console.log(sId);
+    Meteor.call("songs.trackInfo", sId, (err, rest) => {
+      if(err) throw err;
+      console.log(rest);
+      this.setState({
+        trackInfo: rest
+      });
+    });
   }
 
   clickSong(sId, name, popularity) {
@@ -64,7 +75,8 @@ export default class MainContainer extends Component {
             </div>
             <div className="col-md-4">
               <Graph graph={this.state.grafo}
-                pops={this.state.popus} />
+                pops={this.state.popus}
+                clickNode={this.clickNode.bind(this)} />
             </div>
           </div>
         </div>

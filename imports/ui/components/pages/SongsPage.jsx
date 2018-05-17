@@ -10,11 +10,21 @@ export default class SongsPage extends React.Component {
     this.state = {
       songs: [],
       grafo: null,
-      popus: []
+      popus: [],
+      trackInfo: null
     };
   }
 
-
+  clickNode(sId) {
+    console.log(sId);
+    Meteor.call("songs.trackInfo", sId, (err, rest) => {
+      if(err) throw err;
+      console.log(rest);
+      this.setState({
+        trackInfo: rest
+      });
+    });
+  }
   clickSong(sId, name, popularity) {
     console.log(sId);
     Meteor.call("songs.getRecommendations", sId, (err, res) => {
@@ -97,7 +107,8 @@ export default class SongsPage extends React.Component {
           </div>
           <div className="col-md-6">
             <Graph graph={this.state.grafo}
-              pops={this.state.popus} />
+              pops={this.state.popus}
+              clickNode={this.clickNode.bind(this)} />
           </div>
         </div>
 

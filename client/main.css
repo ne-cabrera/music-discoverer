@@ -1,13 +1,10 @@
 body {
   padding-top: 54px;
   font-family: 'Signika', sans-serif;
+  -webkit-text-size-adjust: auto; 
 }
 
-@media (min-width: 992px) {
-  body {
-    padding-top: 56px;
-  }
-}
+
 
   
 nav {
@@ -19,7 +16,6 @@ nav {
   border: 0;
   font-size: 20px;
   transition: all 0.4s;
-  -webkit-transition: all 0.4s;
   padding: 0;
   background: black;
   box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
@@ -92,6 +88,10 @@ nav {
   flex-direction: column;
   justify-content: center;
   
+}
+
+* {
+  box-sizing: border-box;
 }
 
 /*Search*/
