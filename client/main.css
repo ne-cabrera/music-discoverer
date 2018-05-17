@@ -155,3 +155,15 @@ nav {
 .login{
   cursor: pointer;
 }
+
+.elNav{
+  margin-bottom: 20px;
+}
+
+.pl{
+  opacity: 1;
+}
+
+.pl:hover{
+  color: white;
+}

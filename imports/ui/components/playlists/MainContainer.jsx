@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import ListsContainer from "./ListsContainer";
-import NavBarHome from "../navs/NavBarHome";
 import { Graph } from "../Graph";
+import {MainNav} from "../navs/MainNav";
 
 export default class MainContainer extends Component {
 
@@ -65,9 +65,7 @@ export default class MainContainer extends Component {
   render() {
     return (
       <div>
-        <div className="elNav">
-          <NavBarHome />
-        </div>
+        <MainNav/>
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-4">

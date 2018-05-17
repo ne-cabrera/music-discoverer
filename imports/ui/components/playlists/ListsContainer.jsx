@@ -12,6 +12,7 @@ export default class ListsContainer extends Component {
       playlistTracks: []
     };
     this.getTracks = this.getTracks.bind(this);
+    this.getRecentlyPlayed = this.getRecentlyPlayed.bind(this);
   }
 
   componentDidMount() {
@@ -62,13 +63,36 @@ export default class ListsContainer extends Component {
     });
   }
 
+  getRecentlyPlayed(){
+    Meteor.call("playlists.getRecentlyPlayed", (err, res) =>{
+      if(err){
+        throw(err);
+      }
+      var arr = [];
+      res.items.map((d) => {
+        var obj = {};
+        obj.album = d.track.album;
+        obj.artists = d.track.artists;
+        obj.duration = d.track.duration;
+        obj.id = d.track.id;
+        obj.name = d.track.name;
+        obj.popularity = d.track.popularity;
+        obj.preview = d.track.preview_url;
+        arr.push(obj);
+      });
+      this.setState({
+        playlistTracks: arr
+      });
+    });
+  }
+
   render() {
     console.log(this.state);
     return (
       <div className="container">
         <div className="row">
           <div className="col-md-6 playlistsList">
-            <PlaylistList playlists={this.state.playlists} onPlaylistClick={this.getTracks} />
+            <PlaylistList playlists={this.state.playlists} onPlaylistClick={this.getTracks} onRecentlyPayedClick={this.getRecentlyPlayed}/>
           </div>
           <div className="col-md-6 songsList">
             <SongsList songs={this.state.playlistTracks} onSongClick={this.props.onClick} />

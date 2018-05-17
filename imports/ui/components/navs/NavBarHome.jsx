@@ -32,12 +32,12 @@ class NavBarHome extends Component {
         }
         else{
           Meteor.logout();
-          return <div></div>
+          return <div></div>;
         }
       }
     }
     else{
-      return <div></div>
+      return <div></div>;
     }
   }
   render() {
@@ -49,15 +49,9 @@ class NavBarHome extends Component {
               <div className="navbar-header">
                 Music Discoverer
               </div>
-              <button className="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-bar">hola</span>
-                <span className="navbar-toggler-bar"></span>
-                <span className="navbar-toggler-bar"></span>
-              </button>
             </div>
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav ml-auto">
-
                 <li className="nav-item">
                   <Login/>
                   {this.checkLogin()}
