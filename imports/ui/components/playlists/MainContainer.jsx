@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import ListsContainer from "./ListsContainer";
 import { Graph } from "../Graph";
-import {MainNav} from "../navs/MainNav";
+import { MainNav } from "../navs/MainNav";
+import SongDetail from "../Songs/SongDetail";
 
 export default class MainContainer extends Component {
 
@@ -20,10 +21,10 @@ export default class MainContainer extends Component {
     console.log(sId);
     Meteor.call("songs.trackInfo", sId, (err, rest) => {
       if(err) throw err;
-      console.log(rest);
       this.setState({
         trackInfo: rest
       });
+      console.log(this.state.trackInfo);
     });
   }
 
@@ -54,9 +55,13 @@ export default class MainContainer extends Component {
       var thisSong = { name: name, popularity: popularity };
       graph.nodes.push(thisSong);
       console.log(graph);
-      this.setState({
-        grafo: graph,
-        popus: pops
+      Meteor.call("songs.trackInfo", sId, (err, rest) => {
+        if(err) throw err;
+        this.setState({
+          trackInfo: rest,
+          grafo: graph,
+          popus: pops
+        });
       });
     });
   }
@@ -65,7 +70,7 @@ export default class MainContainer extends Component {
   render() {
     return (
       <div>
-        <MainNav/>
+        <MainNav />
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-4">
@@ -76,6 +81,12 @@ export default class MainContainer extends Component {
                 pops={this.state.popus}
                 clickNode={this.clickNode.bind(this)} />
             </div>
+          </div>
+          <div className="row">
+            <div className="songDet">
+              {this.state.trackInfo !== null ? <SongDetail song={this.state.trackInfo} /> : ""}
+            </div>
+
           </div>
         </div>
       </div>

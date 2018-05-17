@@ -102,13 +102,14 @@ nav {
 }
 .playlistsList{
   padding-right: 0px !important;
-  max-height: 500px;
+  max-height: 400px;
   overflow-y: auto;
   width: 500px;
 }
 
 .playlistsList::-webkit-scrollbar{
   width: 5px;
+  max-height: 100px;
 }
 
 
@@ -118,7 +119,7 @@ nav {
 
 .songsList{
   padding-left: 0px !important;
-  max-height: 500px;
+  max-height: 200px;
   overflow-y: auto;
 }
 
@@ -131,14 +132,14 @@ nav {
 }
 
 .albumImg{
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
 }
 
 .playListContainer{
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-top: thin solid #f2f2f2;
   max-width: 100%;
   cursor: pointer;
@@ -166,4 +167,50 @@ nav {
 
 .pl:hover{
   color: white;
+}
+.playName{
+  font-size: 13px;
+}
+
+.card{
+  width: 30rem;
+}
+
+.imgDiv{
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-align: center;
+}
+.crd-img{
+  width: 300px;
+  
+}
+.card-header{
+  text-align: center;
+}
+
+.infobox {
+ 
+  border-spacing: 3px;
+  background-color: #f8f9fa;
+  color: black;
+  margin: 0.5em 0 0.5em 1em;
+  padding: 0.2em;
+  float: right;
+  clear: right;
+  font-size: 88%;
+  line-height: 1.5em;
+  width: 30em;
+
+}
+.thChevere{
+  text-align: center;
+  background-color:#888;
+}
+.elBody{
+  text-align: center;
+}
+.songDet{
+  text-align: center;
+  padding-top: 50px;
 }

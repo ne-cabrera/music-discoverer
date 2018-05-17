@@ -15,11 +15,12 @@ export default class PlaylistListItem extends Component {
     return (
       <div className="row playListContainer" onClick={this.handleClick}>
         <div className="col-md-4">
-          <img src={this.props.img} alt="playlist picture" className="albumImg"/>
+          <img src={this.props.img} alt="playlist picture" className="albumImg" />
         </div>
         <div className="col-md-8">
-          <p>{this.props.name}</p>
+          <p className="playName">{this.props.name}</p>
         </div>
+
       </div>
     );
   }

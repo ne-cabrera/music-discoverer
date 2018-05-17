@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import * as d3 from "d3";
+import * as d3Chromatic from "d3-scale-chromatic";
+
 
 
 export class Graph extends Component {
@@ -10,7 +12,7 @@ export class Graph extends Component {
   }
 
   componentDidUpdate() {
-
+    var color = d3.scaleSequential(d3Chromatic.interpolateGreens);
     if(this.props.graph === null) return;
     console.log(this.props);
     var canvas = d3.select("#network"),
@@ -18,10 +20,10 @@ export class Graph extends Component {
       r = 30,
       width = canvas.attr("width"),
       height = canvas.attr("height"),
-      color = d3.scaleOrdinal(d3.schemeCategory20),
+
       simulation = d3.forceSimulation()
         .force("x", d3.forceX(width / 2))
-        .force("y", d3.forceY(height / 3.5))
+        .force("y", d3.forceY(height / 2))
         .force("collide", d3.forceCollide(r + 1))
         .force("charge", d3.forceManyBody().strength(-3200))
         .force("link", d3.forceLink()
@@ -93,6 +95,8 @@ export class Graph extends Component {
       .domain([0, d3.max(this.props.pops)])
       .range([0, 40]);
 
+    color.domain([0, d3.max(this.props.pops)]);
+
     function drawNode(d) {
       ctx.beginPath();
       ctx.fillStyle = color(d.popularity);
@@ -119,7 +123,7 @@ export class Graph extends Component {
   render() {
     return (
       <div>
-        <canvas className="elCanva" id="network" width="800" height="1000"></canvas>
+        <canvas className="elCanva" id="network" width="700" height="500"></canvas>
       </div>
     );
   }

@@ -8,14 +8,15 @@ export default class SongsListItem extends Component {
   }
 
   handleClick() {
+    console.log(this.props.popularity);
     this.props.onClick(this.props.id, this.props.name, this.props.popularity);
   }
 
   render() {
     return (
       <div className="playListContainer songCont" onClick={this.handleClick}>
-        {this.props.name}
+        <p className="playName">{this.props.name}</p>
       </div>
-    )
+    );
   }
 }
