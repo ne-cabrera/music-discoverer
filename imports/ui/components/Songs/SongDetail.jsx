@@ -1,6 +1,9 @@
 import React from "react";
+import { Meteor } from "meteor/meteor";
+import { withTracker } from "meteor/react-meteor-data";
+import { Comments } from "../../../api/comments";
 
-export default class SongDetail extends React.Component {
+class SongDetail extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -10,6 +13,7 @@ export default class SongDetail extends React.Component {
     return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
   }
   render() {
+    console.log(this.props.comments);
     return (
       <div className="card">
         <h5 className="card-header">{this.props.song.name}</h5>
@@ -52,3 +56,10 @@ export default class SongDetail extends React.Component {
   }
 
 }
+export default withTracker(() => {
+  Meteor.subscribe("comments");
+  let sId = sessionStorage.getItem("sId");
+  return {
+    comments: Comments.find({ songId: sId }).fetch()
+  };
+})(SongDetail);

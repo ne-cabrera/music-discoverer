@@ -19,6 +19,7 @@ export default class MainContainer extends Component {
 
   clickNode(sId) {
     console.log(sId);
+    sessionStorage.setItem("sId", sId);
     Meteor.call("songs.trackInfo", sId, (err, rest) => {
       if(err) throw err;
       this.setState({
@@ -30,6 +31,7 @@ export default class MainContainer extends Component {
 
   clickSong(sId, name, popularity) {
     console.log(sId);
+    sessionStorage.setItem("sId", sId);
     Meteor.call("songs.getRecommendations", sId, (err, res) => {
       if(err) throw (err);
       console.log(res, name, popularity);
