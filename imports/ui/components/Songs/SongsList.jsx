@@ -40,7 +40,7 @@ export default class SongsList extends Component {
     return (
       <div className="songsContainer">
         {this.props.songs.map((d, i) => (
-          <SongsListItem name={d.name} popularity={d.popularity} id={d.id} key={i} onClick={this.props.onSongClick} />
+          <SongsListItem name={d.name} artist={d.artists[0].name} popularity={d.popularity} id={d.id} key={i} onClick={this.props.onSongClick} />
         ))}
       </div>
     );

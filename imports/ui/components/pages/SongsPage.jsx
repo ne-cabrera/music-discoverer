@@ -3,6 +3,7 @@ import { Meteor } from "meteor/meteor";
 import { MainNav } from "../navs/MainNav";
 import SongsList from "../Songs/SongsList";
 import { Graph } from "../Graph";
+import SongDetail from "../Songs/SongDetail";
 export default class SongsPage extends React.Component {
 
   constructor() {
@@ -17,6 +18,7 @@ export default class SongsPage extends React.Component {
 
   clickNode(sId) {
     console.log(sId);
+    sessionStorage.setItem("sId", sId);
     Meteor.call("songs.trackInfo", sId, (err, rest) => {
       if(err) throw err;
       console.log(rest);
@@ -26,6 +28,7 @@ export default class SongsPage extends React.Component {
     });
   }
   clickSong(sId, name, popularity) {
+    sessionStorage.setItem("sId", sId);
     console.log(sId);
     Meteor.call("songs.getRecommendations", sId, (err, res) => {
       if(err) throw (err);
@@ -42,7 +45,7 @@ export default class SongsPage extends React.Component {
       var songs = res.tracks;
       for(let s in songs) {
         var node = { name: songs[s].name, id: songs[s].id, popularity: songs[s].popularity };
-        var link = { source: songs[s].name, target: name };
+        var link = { source: songs[s].name, target: name, id: sId };
         pops.push(songs[s].popularity);
         graph.nodes.push(node);
         graph.links.push(link);
@@ -51,9 +54,13 @@ export default class SongsPage extends React.Component {
       var thisSong = { name: name, popularity: popularity };
       graph.nodes.push(thisSong);
       console.log(graph);
-      this.setState({
-        grafo: graph,
-        popus: pops
+      Meteor.call("songs.trackInfo", sId, (err, rest) => {
+        if(err) throw err;
+        this.setState({
+          trackInfo: rest,
+          grafo: graph,
+          popus: pops
+        });
       });
     });
   }
@@ -79,12 +86,13 @@ export default class SongsPage extends React.Component {
     return (
       <div>
         <MainNav />
+        <h1>Search recomendations for an specific song!</h1>
         <div className="container container-search">
           <div className="row">
             <div className="col-sm-6 col-sm-offset-3">
               <div id="imaginary_container">
                 <div className="input-group stylish-input-group">
-                  <input type="text" className="form-control" placeholder="Search" onKeyPress={this.onPressEnter.bind(this)} />
+                  <input type="text" className="form-control" placeholder="Search Song" onKeyPress={this.onPressEnter.bind(this)} />
                   <span className="input-group-addon">
                     <button type="submit">
                       <span className="glyphicon glyphicon-search"></span>
@@ -97,7 +105,7 @@ export default class SongsPage extends React.Component {
         </div>
         <div className="row">
           <div className="col-md-6">
-            {this.state.songs === [] ? "" :
+            {this.state.songs.length === 0 ? "" :
               <div>
                 <h1>Top Results</h1>
                 <SongsList songs={this.state.songs} onSongClick={this.clickSong.bind(this)} />
@@ -110,6 +118,12 @@ export default class SongsPage extends React.Component {
               pops={this.state.popus}
               clickNode={this.clickNode.bind(this)} />
           </div>
+        </div>
+        <div className="row">
+          <div className="songDet">
+            {this.state.trackInfo !== null ? <SongDetail song={this.state.trackInfo} /> : ""}
+          </div>
+
         </div>
 
       </div>

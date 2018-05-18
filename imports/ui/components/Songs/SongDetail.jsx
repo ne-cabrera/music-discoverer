@@ -79,7 +79,7 @@ class SongDetail extends React.Component {
                     <div class="avatar" style={{ backgroundImage: this.selectImageUrl() }}></div>
                   </div>
 
-                  <div class="">
+                  <div class="comment-block">
                     <form action="">
                       <textarea name="" id="elText" cols="30" rows="3" placeholder="Add comment..."></textarea>
                     </form>
