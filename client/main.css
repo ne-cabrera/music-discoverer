@@ -104,7 +104,7 @@ nav {
   padding-right: 0px !important;
   max-height: 400px;
   overflow-y: auto;
-  width: 500px;
+  max-width: 100%;
 }
 
 .playlistsList::-webkit-scrollbar{
@@ -119,8 +119,6 @@ nav {
 
 .songsList{
   padding-left: 0px !important;
-  max-height: 200px;
-  overflow-y: auto;
 }
 
 .songsList::-webkit-scrollbar{

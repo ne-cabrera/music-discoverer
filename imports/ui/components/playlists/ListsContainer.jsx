@@ -91,10 +91,10 @@ export default class ListsContainer extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-6 playlistsList">
-            <PlaylistList playlists={this.state.playlists} onPlaylistClick={this.getTracks} onRecentlyPayedClick={this.getRecentlyPlayed}/>
+          <div className="col-md-8 playlistsList">
+            <PlaylistList playlists={this.state.playlists} onPlaylistClick={this.getTracks} onRecentlyPayedClick={this.getRecentlyPlayed} onSongClick={this.props.onClick} />
           </div>
-          <div className="col-md-6 songsList">
+          <div className="col-md-4 songsList">
             <SongsList songs={this.state.playlistTracks} onSongClick={this.props.onClick} />
           </div>
         </div>

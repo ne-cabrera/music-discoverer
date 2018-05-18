@@ -4,6 +4,7 @@ import ListsContainer from "./ListsContainer";
 import { Graph } from "../Graph";
 import { MainNav } from "../navs/MainNav";
 import SongDetail from "../Songs/SongDetail";
+import PlaylistList from "./PlaylistList";
 
 export default class MainContainer extends Component {
 
@@ -12,7 +13,8 @@ export default class MainContainer extends Component {
     this.state = {
       grafo: null,
       popus: [],
-      trackInfo: null
+      trackInfo: null,
+      playlists: []
     };
     this.clickSong = this.clickSong.bind(this);
   }
@@ -68,6 +70,28 @@ export default class MainContainer extends Component {
     });
   }
 
+  componentDidMount() {
+    Meteor.call("playlists.getPlaylists", (err, res) => {
+      if(err) {
+        console.log(err);
+      }
+      else {
+        var arr = [];
+        console.log(res.items);
+        res.items.map((d) => {
+          var obj = {};
+          obj.id = d.id;
+          obj.name = d.name;
+          obj.img = d.images[0].url;
+          arr.push(obj);
+        });
+        this.setState({
+          playlists: arr
+        });
+      }
+    });
+  }
+
 
   render() {
     return (
@@ -75,18 +99,21 @@ export default class MainContainer extends Component {
         <MainNav />
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-4">
-              <ListsContainer onClick={this.clickSong} />
+            <div className="col-md-2">
+              <PlaylistList playlists={this.state.playlists} onSongClick={this.clickSong} />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-5">
               <Graph graph={this.state.grafo}
                 pops={this.state.popus}
                 clickNode={this.clickNode.bind(this)} />
             </div>
+            <div className="col-md-5">
+              {this.state.trackInfo !== null ? <SongDetail song={this.state.trackInfo} /> : ""}
+            </div>
           </div>
           <div className="row">
             <div className="songDet">
-              {this.state.trackInfo !== null ? <SongDetail song={this.state.trackInfo} /> : ""}
+              
             </div>
 
           </div>
