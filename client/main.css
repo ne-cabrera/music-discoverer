@@ -1,17 +1,39 @@
+
 body {
   padding-top: 54px;
   font-family: 'Signika', sans-serif;
   -webkit-text-size-adjust: auto; 
 }
+@-ms-viewport{
+  width: device-width;
+}
 
+h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Montserrat", "Helvetica", Arial, sans-serif;
+  font-weight: 300;
+}
 
+footer {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 1px;
+  background: #323232;
+  overflow: hidden;
+}
+.elCopy{
+  color: white;
+}
 
   
 nav {
   margin: auto 100;
   padding-bottom: 3.5rem;
 }
-
+.subtitle{
+  padding-top: 30px;
+}
 .navbar {
   border: 0;
   font-size: 20px;
@@ -60,10 +82,20 @@ nav {
   height: 550px;
   padding-top: 50px;
   text-align: center;
+  color: white;
+}
+.card-body{
+  padding-right: 20px;
+  padding-bottom: 30px;
+
+}
+.laTabla{
+  text-align: center;
+  align-content: center;
 }
 
 .i1{
-  background-image: url("https://images.pexels.com/photos/96380/pexels-photo-96380.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-image: url("https://images.pexels.com/photos/761543/pexels-photo-761543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   background-position: center center;
   background-size: cover;
 }
@@ -83,19 +115,41 @@ nav {
 .imgCar{
   height: 550px;
 }
+.title{
+  padding-bottom: 20px;
+}
+p.p6{
+  line-height: 1.8;
+}
+
+.info {
+  padding: 20px 0;
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.desc {
+  color: #333;
+}
 
 .content-carousel{
-  background-color: rgba(255, 255, 255, 0.16);
   padding: 2rem;
-  border-radius: 0.8rem;
-  width: 60%;
   margin: auto;
-  display: flex;
-  text-align: center;
-  padding: 2rem 1.2rem 0;
+  /* padding: 2rem 1.2rem 0; */
+  padding-left: 100px;
   flex-direction: column;
   justify-content: center;
-  
+  display: block;
+  position: absolute;
+  /* top: 25%;
+  right: 25%;
+  width: 50%;
+  height: 50%; */
+  font-family: sans-serif;
+  font-size: 20px;
+  color: white;
+  vertical-align: middle;
+  text-align: center;
 }
 
 * {
@@ -180,6 +234,7 @@ nav {
 
 .card{
   width: 30rem;
+  height: 580px;
 }
 
 .card2{
@@ -222,6 +277,7 @@ nav {
 .songDet{
   text-align: center;
   padding-top: 50px;
+  padding-left: 10px;
 }
 
 /*Comments*/
@@ -265,6 +321,8 @@ p {
   display: table;
   width: 100%;
   min-height: 5.3125rem;
+  padding-left: 20px;
+  padding-top: 10px;
 }
 
 .photo {
@@ -282,7 +340,7 @@ p {
 .comment-block {
   padding: 1rem;
   background-color: #fff;
-  width: 500px;
+  width: 380px;
   vertical-align: top;
   border-radius: 0.1875rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
@@ -337,7 +395,7 @@ p {
 }
 
 .losComentarios{
-  max-height: 400px;
+  max-height: 280px;
  overflow-y: auto;
 
 }

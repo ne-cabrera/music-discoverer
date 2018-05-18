@@ -20,30 +20,30 @@ class NavBarHome extends Component {
     });
   }
 
-  
-  checkLogin(){
+
+  checkLogin() {
     console.log(this.props.uId);
     console.log(this.props.usr);
     var t = new Date();
-    if(this.props.uId !== null){
-      if(this.props.usr !== undefined){
-        if(this.props.usr.services.spotify.expiresAt > t.getTime()){
-          return <Redirect to="/playlists"/>;
+    if(this.props.uId !== null) {
+      if(this.props.usr !== undefined) {
+        if(this.props.usr.services.spotify.expiresAt > t.getTime()) {
+          return <Redirect to="/playlists" />;
         }
-        else{
+        else {
           Meteor.logout();
           return <div></div>;
         }
       }
     }
-    else{
+    else {
       return <div></div>;
     }
   }
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg fixed-top nav-down" >
+        <nav className="navbar navbar-expand-lg fixed-top nav-down navbar-toggleable-sm" >
           <div className="container">
             <div className="navbar-translate">
               <div className="navbar-header">
@@ -53,7 +53,7 @@ class NavBarHome extends Component {
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Login/>
+                  <Login />
                   {this.checkLogin()}
                 </li>
               </ul>

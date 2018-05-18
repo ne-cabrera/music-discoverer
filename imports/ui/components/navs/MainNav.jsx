@@ -1,11 +1,11 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export class MainNav extends React.Component {
   render() {
     return (
       <div className="elNav">
-        <nav className="navbar navbar-expand-lg fixed-top nav-down" >
+        <nav className="navbar navbar-expand beta-menu align-items-center fixed-top nav-down navbar-toggleable-sm navbar-short" >
           <div className="container">
             <div className="navbar-translate">
               <div className="navbar-header">
@@ -19,7 +19,7 @@ export class MainNav extends React.Component {
                 </li>
                 <li className="nav-item dropdown">
                   <div className="nav-link dropdown-toggle login pl" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Search
+                    Search
                   </div>
                   <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                     <Link to="/artists" className="dropdown-item">Artists</Link>

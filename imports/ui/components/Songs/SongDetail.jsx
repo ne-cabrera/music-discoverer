@@ -34,13 +34,13 @@ class SongDetail extends React.Component {
       <div className="songDet">
         <div className="row">
           <div className="col-md-6">
-            <div className="card">
+            <div className="card ">
               <h5 className="card-header">{this.props.song.name}</h5>
               <div className="imgDiv">
                 <img className="crd-img" src={this.props.song.album.images[1].url} alt="Song image" />
               </div>
-              <div className="card-body">
-                <table className="infobox vcard plainlist">
+              <div className="card-body laTabla">
+                <table className="infobox vcard plainlist text-align">
                   <tbody className="elBody">
                     <tr>
                       <th colSpan="2" className="thChevere">Song Information</th>
@@ -69,9 +69,7 @@ class SongDetail extends React.Component {
                 </table>
               </div>
             </div>
-          </div>
-          <div className="col-md-6">
-            <div className="card card2">
+            <div className="card ">
               <h5 className="card-header">Comments & Ratings</h5>
               <div className="card-body">
                 <div class="comment-wrap">
@@ -92,6 +90,9 @@ class SongDetail extends React.Component {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="col-md-6">
+
           </div>
         </div>
 

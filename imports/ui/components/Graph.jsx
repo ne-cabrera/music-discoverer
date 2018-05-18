@@ -25,7 +25,7 @@ export class Graph extends Component {
         .force("x", d3.forceX(width / 2))
         .force("y", d3.forceY(height / 2))
         .force("collide", d3.forceCollide(r + 1))
-        .force("charge", d3.forceManyBody().strength(-3200))
+        .force("charge", d3.forceManyBody().strength(-1000))
         .force("link", d3.forceLink()
           .id(function(d) { return d.name; }));
 
@@ -50,13 +50,13 @@ export class Graph extends Component {
 
 
       ctx.strokeStyle = "#aaa";
-      ctx.globalAlpha = 1;
+      ctx.globalAlpha = 0.8;
       graph.links.forEach(drawLink);
       // console.log("que dicen");
       ctx.stroke();
 
       ctx.beginPath();
-      ctx.globalAlpha = 2.0;
+      ctx.globalAlpha = 1.0;
       graph.nodes.forEach(drawNode);
 
     }
@@ -93,7 +93,7 @@ export class Graph extends Component {
     console.log(this.props.pops);
     var scale = d3.scaleLinear()
       .domain([0, d3.max(this.props.pops)])
-      .range([0, 40]);
+      .range([0, 20]);
 
     color.domain([0, d3.max(this.props.pops)]);
 
@@ -123,7 +123,7 @@ export class Graph extends Component {
   render() {
     return (
       <div>
-        <canvas className="elCanva" id="network" width="700" height="500"></canvas>
+        <canvas className="elCanva" id="network" width="500" height="300"></canvas>
       </div>
     );
   }
