@@ -18,28 +18,37 @@ export default class PlaylistListItem extends Component {
         console.log(err);
       }
       else {
-        var arr = [];
-        res.items.map((d) => {
-          var obj = {};
-          obj.album = d.track.album;
-          obj.artists = d.track.artists;
-          obj.duration = d.track.duration;
-          obj.id = d.track.id;
-          obj.name = d.track.name;
-          obj.popularity = d.track.popularity;
-          obj.preview = d.track.preview_url;
-          arr.push(obj);
-        });
-        this.setState({
-          playlistTracks: arr
-        });
+        if(this.state.playlistTracks.length === 0 || this.state.playlistTracks.length !== res.items.length)
+        {
+          var arr = [];
+          res.items.map((d) => {
+            var obj = {};
+            obj.album = d.track.album;
+            obj.artists = d.track.artists;
+            obj.duration = d.track.duration;
+            obj.id = d.track.id;
+            obj.name = d.track.name;
+            obj.popularity = d.track.popularity;
+            obj.preview = d.track.preview_url;
+            arr.push(obj);
+          });
+          this.setState({
+            playlistTracks: arr
+          });
+        }
+        else{
+          this.setState({
+            playlistTracks: []
+          });
+        }
+        
       }
     });
   }
 
   render() {
     return (
-      <div>
+      <div className="">
         <div className="row playListContainer" onClick={this.getTracks}>
           <div className="col-md-4">
             <img src={this.props.img} alt="playlist picture" className="albumImg" />

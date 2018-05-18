@@ -5,6 +5,7 @@ import { Graph } from "../Graph";
 import { MainNav } from "../navs/MainNav";
 import SongDetail from "../Songs/SongDetail";
 import PlaylistList from "./PlaylistList";
+import Stars from "../stars/Stars";
 
 export default class MainContainer extends Component {
 
@@ -112,8 +113,8 @@ export default class MainContainer extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="songDet">
-              
+            <div>
+              <Stars/>
             </div>
 
           </div>

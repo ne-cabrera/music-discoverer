@@ -341,3 +341,7 @@ p {
  overflow-y: auto;
 
 }
+
+.checked {
+  color: orange;
+}
