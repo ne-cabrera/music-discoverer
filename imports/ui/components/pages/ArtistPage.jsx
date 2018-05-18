@@ -4,6 +4,7 @@ import { MainNav } from "../navs/MainNav";
 import SongsList from "../Songs/SongsList";
 import { Graph } from "../Graph";
 import ArtistsList from "../artists/ArtistsList";
+import ArtistDetail from "../artists/ArtistDetail";
 export default class ArtistPage extends React.Component {
 
   constructor() {
@@ -50,7 +51,7 @@ export default class ArtistPage extends React.Component {
       var artists = res.artists;
       for(var i in artists) {
         var node = { name: artists[i].name, id: artists[i].id, popularity: artists[i].popularity };
-        var link = { source: artists[i].name, target: name };
+        var link = { source: artists[i].name, target: name, id: aId };
         pops.push(artists[i].popularity);
         graph.nodes.push(node);
         graph.links.push(link);
@@ -59,9 +60,19 @@ export default class ArtistPage extends React.Component {
       var thisArtist = { name: name, popularity: popularity };
       graph.nodes.push(thisArtist);
       console.log(graph);
-      this.setState({
-        grafo: graph,
-        popus: pops
+      Meteor.call("songs.getArtistDetail", aId, (err, rest) => {
+        if(err) throw err;
+        console.log(rest);
+        Meteor.call("songs.topTracksArtist", aId, (err, rest2) => {
+          if(err) throw err;
+          console.log(rest2);
+          this.setState({
+            grafo: graph,
+            popus: pops,
+            nodeArtist: rest,
+            topTracks: rest2
+          });
+        });
       });
     });
   }
@@ -109,6 +120,12 @@ export default class ArtistPage extends React.Component {
               pops={this.state.popus}
               clickNode={this.clickNode.bind(this)} />
           </div>
+        </div>
+        <div className="row">
+          {this.state.nodeArtist === null && this.state.topTracks.length === 0 ? "" :
+            <ArtistDetail info={this.state.nodeArtist} songs={this.state.topTracks} />
+          }
+
         </div>
 
       </div>

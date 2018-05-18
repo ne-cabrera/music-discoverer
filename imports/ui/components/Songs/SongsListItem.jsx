@@ -15,7 +15,10 @@ export default class SongsListItem extends Component {
   render() {
     return (
       <div className="playListContainer songCont" onClick={this.handleClick}>
-        <p className="playName">{this.props.name}</p>
+
+        {this.props.artist === undefined ? <p className="playName">{this.props.name}</p> :
+          <p className="playName">{this.props.name + " - " + this.props.artist}</p>}
+
       </div>
     );
   }

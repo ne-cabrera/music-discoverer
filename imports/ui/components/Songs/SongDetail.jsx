@@ -13,7 +13,7 @@ class SongDetail extends React.Component {
     return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
   }
   selectImageUrl() {
-    if(Meteor.user().services.spotify.images === []) {
+    if(Meteor.user().services.spotify.images.length === 0) {
       return "url('http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png')";
     } else {
       console.log(Meteor.user().services.spotify.images);
@@ -79,7 +79,7 @@ class SongDetail extends React.Component {
                     <div class="avatar" style={{ backgroundImage: this.selectImageUrl() }}></div>
                   </div>
 
-                  <div class="">
+                  <div class="comment-block">
                     <form action="">
                       <textarea name="" id="elText" cols="30" rows="3" placeholder="Add comment..."></textarea>
                     </form>

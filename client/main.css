@@ -46,6 +46,14 @@ nav {
   text-align: center;
   padding-top: 50px;
 }
+.list-item-chevere{
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+  cursor: pointer;
+
+}
 
 /*Carousel*/
 .carousel-item{
@@ -276,7 +284,7 @@ p {
 .comment-block {
   padding: 1rem;
   background-color: #fff;
-  display: 200px;
+  width: 500px;
   vertical-align: top;
   border-radius: 0.1875rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
