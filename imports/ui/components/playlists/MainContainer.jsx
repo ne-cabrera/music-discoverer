@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import ListsContainer from "./ListsContainer";
 import { Graph } from "../Graph";
-import { MainNav } from "../navs/MainNav";
+import MainNav from "../navs/MainNav";
 import SongDetail from "../Songs/SongDetail";
 import PlaylistList from "./PlaylistList";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
-import { MainNav } from "../navs/MainNav";
+import MainNav from "../navs/MainNav";
 import SongsList from "../Songs/SongsList";
 import { Graph } from "../Graph";
 import ArtistsList from "../artists/ArtistsList";
