@@ -270,7 +270,7 @@ p.p6{
 }
 .card-header{
   text-align: center;
-  background-color: #1db954;
+  background-color: #1db954 !important;
 }
 #play{
   background-color: #1db954;
