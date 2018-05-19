@@ -239,9 +239,9 @@ p.p6{
 .login{
   cursor: pointer;
 }
-.songsContainer, .listContainer{
+.songsContainer2,listContainer{
   width: 218px;
-  height: 400px;
+  height: 300px;
   overflow-y: auto;
 }
 .losPds{
@@ -261,6 +261,9 @@ p.p6{
 }
 .playName{
   font-size: 13px;
+}
+#cardArtist{
+  height: 920px;
 }
 
 .card{

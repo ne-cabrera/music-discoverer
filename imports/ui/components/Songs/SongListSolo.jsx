@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SongsListItem from "./SongsListItem";
 import * as d3 from "d3";
 
-export default class SongsList extends Component {
+export default class SongListSolo extends Component {
 
   componentDidUpdate(prevProps) {
     var diff = this.areDifferent(prevProps, this.props);
@@ -38,10 +38,15 @@ export default class SongsList extends Component {
   render() {
     console.log(this.props.songs);
     return (
-      <div className="songsContainer">
-        {this.props.songs.map((d, i) => (
-          <SongsListItem name={d.name} artist={d.artists[0].name} popularity={d.popularity} id={d.id} key={i} onClick={this.props.onSongClick} />
-        ))}
+      <div className="card card3" id="eldArtista">
+        <h5 className="card-header" id="play">Top Results</h5>
+        <div className="card-body">
+          <div className="songsContainer2">
+            {this.props.songs.map((d, i) => (
+              <SongsListItem name={d.name} artist={d.artists[0].name} popularity={d.popularity} id={d.id} key={i} onClick={this.props.onSongClick} />
+            ))}
+          </div>
+        </div>
       </div>
 
 

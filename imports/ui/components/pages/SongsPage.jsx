@@ -1,7 +1,7 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
 import MainNav from "../navs/MainNav";
-import SongsList from "../Songs/SongsList";
+import SongListSolo from "../Songs/SongListSolo";
 import { Graph } from "../Graph";
 import SongDetail from "../Songs/SongDetail";
 export default class SongsPage extends React.Component {
@@ -104,7 +104,7 @@ export default class SongsPage extends React.Component {
           <div className="col-md-2">
             {this.state.songs.length === 0 ? "" :
               <div>
-                <SongsList songs={this.state.songs} onSongClick={this.clickSong.bind(this)} />
+                <SongListSolo songs={this.state.songs} onSongClick={this.clickSong.bind(this)} />
               </div>
 
             }

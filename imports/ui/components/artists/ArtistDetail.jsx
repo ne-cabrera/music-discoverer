@@ -9,7 +9,7 @@ export default class ArtistDetail extends React.Component {
     console.log(this.props);
     return (
       <div className="col-md-12">
-        <div className="card">
+        <div className="card" id="cardArtist">
           <h5 className="card-header">{this.props.info.name}</h5>
           <div className="imgDiv">
             <img className="crd-img" src={this.props.info.images[1].url} alt="Song image" />
