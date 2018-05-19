@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import { withHistory, Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
-
 
 export class Login extends Component {
 
@@ -18,7 +16,6 @@ export class Login extends Component {
     };
     Meteor.loginWithSpotify(options, function(err) {
       console.log(err || "No error");
-      <Redirect to="/playlists" />;
     });
   }
 

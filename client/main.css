@@ -23,6 +23,12 @@ p {
   padding-top: 100px;
 }
 
+#eldArtista{
+  height: 400px;
+}
+#elArtista{
+  padding-left: 400px;
+}
 
 footer {
   width: 100%;
@@ -171,11 +177,13 @@ p.p6{
   box-sizing: border-box;
 }
 
+
+
 /*Search*/
 
 .container-search{
-  padding-top: 40px;
   text-align: center;
+  padding-left: 400px;
 }
 .playlistsList{
   padding-right: 0px !important;
@@ -231,7 +239,15 @@ p.p6{
 .login{
   cursor: pointer;
 }
-
+.songsContainer, .listContainer{
+  width: 218px;
+  height: 400px;
+  overflow-y: auto;
+}
+.losPds{
+  padding-left: 30px;
+  padding-top: 20px;
+}
 .elNav{
   margin-bottom: 20px;
 }

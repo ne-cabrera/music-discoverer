@@ -13,9 +13,10 @@ export default class ArtistsListItem extends Component {
 
   render() {
     return (
-      <li className="list-group-item" onClick={this.handleClick}>
-        <a className="list-item-chevere">{this.props.name}</a>
-      </li>
+      <div className="playListContainer songCont" onClick={this.handleClick}>
+        <p className="playName">{this.props.name}</p>
+      </div>
+
     );
   }
 }
