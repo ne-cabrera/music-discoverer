@@ -6,6 +6,7 @@ import { MainNav } from "../navs/MainNav";
 import SongDetail from "../Songs/SongDetail";
 import PlaylistList from "./PlaylistList";
 import Stars from "../stars/Stars";
+import { Session } from "meteor/session";
 
 export default class MainContainer extends Component {
 
@@ -23,6 +24,7 @@ export default class MainContainer extends Component {
   clickNode(sId) {
     console.log(sId);
     sessionStorage.setItem("sId", sId);
+    Session.set("songId", sId);
     Meteor.call("songs.trackInfo", sId, (err, rest) => {
       if(err) throw err;
       this.setState({
@@ -35,6 +37,7 @@ export default class MainContainer extends Component {
   clickSong(sId, name, popularity) {
     console.log(sId);
     sessionStorage.setItem("sId", sId);
+    Session.set("songId", sId);
     Meteor.call("songs.getRecommendations", sId, (err, res) => {
       if(err) throw (err);
       console.log(res, name, popularity);
@@ -111,12 +114,6 @@ export default class MainContainer extends Component {
             <div className="col-md-5">
               {this.state.trackInfo !== null ? <SongDetail song={this.state.trackInfo} /> : ""}
             </div>
-          </div>
-          <div className="row">
-            <div>
-              <Stars/>
-            </div>
-
           </div>
         </div>
       </div>

@@ -11,8 +11,8 @@ export default class Stars extends Component {
 
   handleClick(e){
     var num = e.target.getAttribute("value");
+    this.props.onClick(num);
     console.log(num);
-    //Meteor.call("ratings.addRating", sId, num)
   }
 
   renderStars(){

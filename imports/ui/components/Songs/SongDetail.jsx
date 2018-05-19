@@ -3,6 +3,9 @@ import { Meteor } from "meteor/meteor";
 import { withTracker } from "meteor/react-meteor-data";
 import { Comments } from "../../../api/comments";
 import CommentList from "../comments/CommentList";
+import Stars from "../stars/Stars";
+import RateStars from "../stars/RateStars";
+
 class SongDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -28,19 +31,22 @@ class SongDetail extends React.Component {
     Meteor.call("comments.insertComment", sId, comment, usr);
     document.getElementById("elText").value = "";
   }
+
+  rating(num){
+    let sId = sessionStorage.getItem("sId");
+    Meteor.call("ratings.addRating", sId, num);
+  }
   render() {
     console.log(this.props.comments);
     return (
       <div className="songDet">
-        <div className="row">
-          <div className="col-md-6">
-            <div className="card">
+            <div className="card ">
               <h5 className="card-header">{this.props.song.name}</h5>
               <div className="imgDiv">
                 <img className="crd-img" src={this.props.song.album.images[1].url} alt="Song image" />
               </div>
-              <div className="card-body">
-                <table className="infobox vcard plainlist">
+              <div className="card-body laTabla">
+                <table className="infobox vcard plainlist text-align">
                   <tbody className="elBody">
                     <tr>
                       <th colSpan="2" className="thChevere">Song Information</th>
@@ -65,15 +71,25 @@ class SongDetail extends React.Component {
                         {this.props.song.preview_url !== null ? <audio controls src={this.props.song.preview_url}></audio> : "Sorry, we don't have a preview"}
                       </th>
                     </tr>
+                    <tr>
+                      <th colSpan="2" className="thChevere">Rating</th>
+                    </tr>
+                    <tr>
+                      <th colSpan="2">
+                        <RateStars/>
+                      </th>
+                    </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-          </div>
-          <div className="col-md-6">
-            <div className="card card2">
+            <div className="card ">
               <h5 className="card-header">Comments & Ratings</h5>
               <div className="card-body">
+                <div>
+                  <div>Rate it</div>
+                  <div><Stars onClick={this.rating}/></div>
+                </div>
                 <div class="comment-wrap">
                   <div class="photo">
                     <div class="avatar" style={{ backgroundImage: this.selectImageUrl() }}></div>
@@ -92,10 +108,9 @@ class SongDetail extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
         </div>
 
-      </div>
+
 
     );
   }
