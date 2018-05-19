@@ -46,7 +46,7 @@ class NavBarHome extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg fixed-top nav-down navbar-toggleable-sm" >
+        <nav className="navbar navbar-expand beta-menu align-items-center fixed-top nav-down navbar-toggleable-sm navbar-short" >
           <div className="container">
             <div className="navbar-translate">
               <div className="navbar-header">
