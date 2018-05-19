@@ -39,6 +39,30 @@ class RateStars extends Component {
     })
   }
 
+  componentDidMount(){
+    var n =0
+    var num = 0;
+    console.log(this.props);
+    if(this.props.rating !== undefined){
+      var suma = 0;
+      for(let i = 0; i < this.props.rating.length; i++){
+          suma += parseInt(this.props.rating[i].val);
+      }
+      prom = suma/this.props.rating.length;
+      num = Math.ceil(prom);
+    }
+    console.log(prom);
+  var st = d3.select(".rStarsCont")
+  .selectAll(".estrellaR")
+  .each( function() {
+      console.log("bbbbb");
+      if(num > n){
+          d3.select(this).classed("checked", true);
+          n ++;
+      }
+  })
+  }
+
   shouldComponentUpdate(nextProps, nextState){
       d3.select(".rStarsCont")
       .selectAll(".estrellaR").classed("checked", false);
