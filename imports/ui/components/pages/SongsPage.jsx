@@ -4,6 +4,8 @@ import MainNav from "../navs/MainNav";
 import SongListSolo from "../Songs/SongListSolo";
 import { Graph } from "../Graph";
 import SongDetail from "../Songs/SongDetail";
+import { Session } from "meteor/session";
+
 export default class SongsPage extends React.Component {
 
   constructor() {
@@ -19,6 +21,7 @@ export default class SongsPage extends React.Component {
   clickNode(sId) {
     console.log(sId);
     sessionStorage.setItem("sId", sId);
+    Session.set("songId", sId);
     Meteor.call("songs.trackInfo", sId, (err, rest) => {
       if(err) throw err;
       console.log(rest);
@@ -29,6 +32,7 @@ export default class SongsPage extends React.Component {
   }
   clickSong(sId, name, popularity) {
     sessionStorage.setItem("sId", sId);
+    Session.set("songId", sId);
     console.log(sId);
     Meteor.call("songs.getRecommendations", sId, (err, res) => {
       if(err) throw (err);
