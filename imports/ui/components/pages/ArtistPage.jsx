@@ -1,6 +1,6 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
-import { MainNav } from "../navs/MainNav";
+import MainNav from "../navs/MainNav";
 import SongsList from "../Songs/SongsList";
 import { Graph } from "../Graph";
 import ArtistsList from "../artists/ArtistsList";
@@ -95,39 +95,39 @@ export default class ArtistPage extends React.Component {
     return (
       <div>
         <MainNav />
-        <div className="container container-search">
+        <div className="laInstruccion">
+          <h4> Search for similar Artists!</h4>
+        </div>
+        <div className="container container-search" id="elArtista">
           <div className="row">
             <div className="col-sm-6 col-sm-offset-3">
               <div id="imaginary_container">
                 <div className="input-group stylish-input-group">
-                  <input type="text" className="form-control" placeholder="Search" onKeyPress={this.onPressEnter.bind(this)} />
-                  <span className="input-group-addon">
-                    <button type="submit">
-                      <span className="glyphicon glyphicon-search"></span>
-                    </button>
-                  </span>
+                  <input type="text" className="form-control" placeholder="Search Artist" onKeyPress={this.onPressEnter.bind(this)} />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-6">
-            <ArtistsList artists={this.state.artists} onSongClick={this.clickArtist.bind(this)} />
+        <div className="row losPds">
+          <div className="col-md-2">
+            {this.state.artists.length === 0 ? "" :
+              <ArtistsList artists={this.state.artists} onSongClick={this.clickArtist.bind(this)} />
+            }
           </div>
-          <div className="col-md-6">
+          <div className="col-md-5 elgrafito">
             <Graph graph={this.state.grafo}
               pops={this.state.popus}
               clickNode={this.clickNode.bind(this)} />
           </div>
+          <div className="col-md-5">
+            <div className="songDet">
+              {this.state.nodeArtist === null && this.state.topTracks.length === 0 ? "" :
+                <ArtistDetail info={this.state.nodeArtist} songs={this.state.topTracks} />
+              }
+            </div>
+          </div>
         </div>
-        <div className="row">
-          {this.state.nodeArtist === null && this.state.topTracks.length === 0 ? "" :
-            <ArtistDetail info={this.state.nodeArtist} songs={this.state.topTracks} />
-          }
-
-        </div>
-
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import ListsContainer from "./ListsContainer";
 import { Graph } from "../Graph";
-import { MainNav } from "../navs/MainNav";
+import MainNav from "../navs/MainNav";
 import SongDetail from "../Songs/SongDetail";
 import PlaylistList from "./PlaylistList";
 import Stars from "../stars/Stars";
@@ -101,12 +101,23 @@ export default class MainContainer extends Component {
     return (
       <div>
         <MainNav />
+        <div className="laInstruccion">
+          <h4> Please Select a playList and search for a song</h4>
+          <h6> If you don't have any playList you can search by the reacently played song List</h6>
+        </div>
         <div className="container-fluid">
-          <div className="row">
+          <div className="row" >
             <div className="col-md-2">
-              <PlaylistList playlists={this.state.playlists} onSongClick={this.clickSong} />
+              <div className="card card3">
+                <h5 className="card-header" id="play">
+                  Your playlists
+                </h5>
+                <div className="card-body">
+                  <PlaylistList playlists={this.state.playlists} onSongClick={this.clickSong} />
+                </div>
+              </div>
             </div>
-            <div className="col-md-5">
+            <div className="col-md-5 elgrafito">
               <Graph graph={this.state.grafo}
                 pops={this.state.popus}
                 clickNode={this.clickNode.bind(this)} />

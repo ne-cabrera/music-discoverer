@@ -1,7 +1,7 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
-import { MainNav } from "../navs/MainNav";
-import SongsList from "../Songs/SongsList";
+import MainNav from "../navs/MainNav";
+import SongListSolo from "../Songs/SongListSolo";
 import { Graph } from "../Graph";
 import SongDetail from "../Songs/SongDetail";
 export default class SongsPage extends React.Component {
@@ -86,45 +86,42 @@ export default class SongsPage extends React.Component {
     return (
       <div>
         <MainNav />
-        <h1>Search recomendations for an specific song!</h1>
+        <div className="laInstruccion">
+          <h4> Search recomendations for an specific song!</h4>
+        </div>
         <div className="container container-search">
           <div className="row">
             <div className="col-sm-6 col-sm-offset-3">
               <div id="imaginary_container">
                 <div className="input-group stylish-input-group">
                   <input type="text" className="form-control" placeholder="Search Song" onKeyPress={this.onPressEnter.bind(this)} />
-                  <span className="input-group-addon">
-                    <button type="submit">
-                      <span className="glyphicon glyphicon-search"></span>
-                    </button>
-                  </span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-6">
+        <div className="row losPds">
+          <div className="col-md-2">
             {this.state.songs.length === 0 ? "" :
               <div>
-                <h1>Top Results</h1>
-                <SongsList songs={this.state.songs} onSongClick={this.clickSong.bind(this)} />
+                <SongListSolo songs={this.state.songs} onSongClick={this.clickSong.bind(this)} />
               </div>
 
             }
           </div>
-          <div className="col-md-6">
+          <div className="col-md-5 elgrafito">
             <Graph graph={this.state.grafo}
               pops={this.state.popus}
               clickNode={this.clickNode.bind(this)} />
           </div>
-        </div>
-        <div className="row">
-          <div className="songDet">
-            {this.state.trackInfo !== null ? <SongDetail song={this.state.trackInfo} /> : ""}
-          </div>
+          <div className="col-md-5">
+            <div className="songDet">
+              {this.state.trackInfo !== null ? <SongDetail song={this.state.trackInfo} /> : ""}
+            </div>
 
+          </div>
         </div>
+
 
       </div>
     );

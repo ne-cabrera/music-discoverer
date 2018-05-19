@@ -43,6 +43,8 @@ export default class SongsList extends Component {
           <SongsListItem name={d.name} artist={d.artists[0].name} popularity={d.popularity} id={d.id} key={i} onClick={this.props.onSongClick} />
         ))}
       </div>
+
+
     );
   }
 }

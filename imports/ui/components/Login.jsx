@@ -19,8 +19,8 @@ export class Login extends Component {
     });
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <a className="nav-link login" onClick={this.login}>Login</a>
     );
   }

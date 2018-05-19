@@ -8,11 +8,26 @@ body {
   width: device-width;
 }
 
-h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Montserrat", "Helvetica", Arial, sans-serif;
+ h1,h2,h3,h4,h5,h6  {
+
+  font-family: 'Signika', sans-serif !important;
   font-weight: 300;
+}
+/*  */
+p {
+  line-height: 1.3125rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.elgrafito{
+  padding-top: 100px;
+}
+
+#eldArtista{
+  height: 400px;
+}
+#elArtista{
+  padding-left: 400px;
 }
 
 footer {
@@ -41,8 +56,15 @@ nav {
   padding: 0;
   background: black;
   box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+  font-family: 'Signika', sans-serif;
   height: 57px;
 
+}
+.elTitulo{
+  height: 50px;
+  background-color: springgreen;
+  text-align: center;
+  vertical-align: middle;
 }
 .nav-item, .nav-link {
   line-height: 1.6;
@@ -148,7 +170,6 @@ p.p6{
   font-family: sans-serif;
   font-size: 20px;
   color: white;
-  vertical-align: middle;
   text-align: center;
 }
 
@@ -156,11 +177,13 @@ p.p6{
   box-sizing: border-box;
 }
 
+
+
 /*Search*/
 
 .container-search{
-  padding-top: 40px;
   text-align: center;
+  padding-left: 400px;
 }
 .playlistsList{
   padding-right: 0px !important;
@@ -216,7 +239,15 @@ p.p6{
 .login{
   cursor: pointer;
 }
-
+.songsContainer2,listContainer{
+  width: 218px;
+  height: 300px;
+  overflow-y: auto;
+}
+.losPds{
+  padding-left: 30px;
+  padding-top: 20px;
+}
 .elNav{
   margin-bottom: 20px;
 }
@@ -231,6 +262,9 @@ p.p6{
 .playName{
   font-size: 13px;
 }
+#cardArtist{
+  height: 920px;
+}
 
 .card{
   width: 30rem;
@@ -239,6 +273,10 @@ p.p6{
 
 .card2{
   width: 40rem;
+}
+.card3{
+  width:15rem;
+  height: 30rem;
 }
 .imgDiv{
   padding-bottom: 20px;
@@ -251,7 +289,13 @@ p.p6{
 }
 .card-header{
   text-align: center;
+  background-color: #1db954 !important;
 }
+#play{
+  background-color: #1db954;
+font-family: 'Signika', sans-serif;
+}
+
 
 .infobox {
  
@@ -269,14 +313,16 @@ p.p6{
 }
 .thChevere{
   text-align: center;
-  background-color:#888;
+  background-color:black;
+  color:white;
+  border-radius: 10px;
 }
 .elBody{
   text-align: center;
 }
 .songDet{
   text-align: center;
-  padding-top: 50px;
+  padding-top: 0px;
   padding-left: 10px;
 }
 
@@ -306,9 +352,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #ced2db;
 }
 
-p {
-  line-height: 1.3125rem;
-}
+
 
 .comments {
   margin: 2.5rem auto 0;
@@ -402,4 +446,10 @@ p {
 
 .checked {
   color: orange;
+}
+
+.laInstruccion{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
 }

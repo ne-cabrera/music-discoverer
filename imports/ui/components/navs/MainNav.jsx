@@ -1,7 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Meteor } from "meteor/meteor";
+import { withTracker } from "meteor/react-meteor-data";
 
-export class MainNav extends React.Component {
+class MainNav extends React.Component {
+
+  handleLogout() {
+    sessionStorage.clear();
+    localStorage.clear();
+    this.props.usr.services = null;
+    Meteor.users.remove({ _id: Meteor.userId() });
+    Meteor.logout((err) => {
+      if(err) {
+        console.log(err.reason);
+      }
+    });
+  }
+
   render() {
     return (
       <div className="elNav">
@@ -26,6 +41,9 @@ export class MainNav extends React.Component {
                     <Link to="/songSearch" className="dropdown-item">Song</Link>
                   </div>
                 </li>
+                <li className="nav-item active">
+                  <Link to="/" className="nav-link pl" onClick={this.handleLogout.bind(this)}> Logout</Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -33,4 +51,9 @@ export class MainNav extends React.Component {
       </div>
     );
   }
-}
+} export default withTracker(() => {
+  return {
+    uId: Meteor.userId(),
+    usr: Meteor.user()
+  };
+})(MainNav);

@@ -25,6 +25,7 @@ class NavBarHome extends Component {
     console.log(this.props.uId);
     console.log(this.props.usr);
     var t = new Date();
+
     if(this.props.uId !== null) {
       if(this.props.usr !== undefined) {
         if(this.props.usr.services.spotify.expiresAt > t.getTime()) {
@@ -34,16 +35,18 @@ class NavBarHome extends Component {
           Meteor.logout();
           return <div></div>;
         }
+      } else {
+        return <Redirect to="/" />;
       }
     }
     else {
-      return <div></div>;
+      return <Redirect to="/" />;
     }
   }
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg fixed-top nav-down navbar-toggleable-sm" >
+        <nav className="navbar navbar-expand beta-menu align-items-center fixed-top nav-down navbar-toggleable-sm navbar-short" >
           <div className="container">
             <div className="navbar-translate">
               <div className="navbar-header">
